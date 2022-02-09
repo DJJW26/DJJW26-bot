@@ -1,26 +1,44 @@
-const Discord = module.require('discord.js');
-const moment = require('moment');
-
 module.exports = {
     name: 'whois',
-    description: 'gives description bout user',
-    async execute(message, args, client, Discord, ProfileData, userQuery, master) {
+    aliases: ['wi'],
+    usage: 'user_id',
+    description: 'Shows mutuals and userinfo about a certain user.',
+    async execute(message, args, client, user) {
+        let userid =
+            message.mentions.users.size > 0
+                ? message.mentions.users.first().id
+                : args[0]
 
-        const user = message.mentions.users.first() || message.author;
-        const roles = new Map();
-        const joinDiscord = moment(user.createdAt).format('llll');
-        const joinServer = moment(user.joinedAt).format('llll');
-        const embed = new Discord.MessageEmbed()
-            .setAuthor(user.username + '#' + user.discriminator, user.displayAvatarURL)
-            .setDescription(`${user}`)
-            .setColor(`RANDOM`)
-            .setThumbnail(`${user.displayAvatarURL()}`)
-            .addField('Joined at:', `${moment.utc(user.joinedAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, true)
-            .addField('Status:', user.presence?.status(), true)
-//            .addField('Roles:', user.roles.map(r => `${r}`).join(' | '), true)
-            .setFooter(`ID: ${user.id}`)
-            .setTimestamp();
+        if (!userid) userid = message.author.id
+        if (!client.users.cache.get(userid))
+            return message.channel.send(`The user_id was not found.`)
 
-        message.channel.send({ embeds : [embed] });
-    }
+        let results = ''
+        client.guilds.cache.forEach((guild) => {
+            if (guild.members.cache.has(userid))
+                results += `(\`${guild.id}\`) - **${guild.name}**\n`
+        })
+        message.channel.send({
+            embeds: [
+                {
+                    author: {
+                        name:
+                            '| ' +
+                            client.users.cache.get(userid).tag +
+                            ` -- ${userid}`,
+                        icon_url: client.users.cache
+                            .get(userid)
+                            .displayAvatarURL({ dynamic: false }),
+                    },
+                    description: `**Mutual Servers**\n` + results,
+                    color: 'RANDOM',
+                    thumbnail: {
+                        url: client.users.cache
+                            .get(userid)
+                            .displayAvatarURL({ dynamic: true }),
+                    },
+                },
+            ],
+        })
+    },
 }
