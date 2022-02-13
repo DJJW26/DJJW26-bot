@@ -3,7 +3,7 @@ module.exports = {
     name : 'trigger',
     description: 'Add a trigger',
 
-    execute : async(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) => {
+    execute : async(message, args, client) => {
         schema.findOne({ guild: message.guild.id }, async(err, data) => {
             if(!args[0]) {
                 if(!data || !data.triggers) return message.reply('There are no triggers yet!')

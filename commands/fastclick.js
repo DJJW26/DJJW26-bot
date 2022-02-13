@@ -7,7 +7,7 @@ module.exports = {
     /**
      * @param {Message} message
      */
-    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
+    async execute(message, args) {
         const user1 = message.member
         const user2 =
             message.mentions.members.first() ||

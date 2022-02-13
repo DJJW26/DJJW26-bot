@@ -16,7 +16,7 @@ module.exports = {
      * @param {Message} message
      * @param {String[]} args
      */
-    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
+    async execute(message, client) {
         if (!message.member.permissions.has('MANAGE_GUILD') || message.author.id == '869768645067292693') {
             return message.reply(
                 'You need the `MANAGE_GUILD` permission to run this command.'

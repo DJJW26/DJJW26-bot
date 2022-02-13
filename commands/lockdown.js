@@ -3,7 +3,7 @@ module.exports = {
     name: 'lockdown',
     description: 'lockdowns certain channels',
     cooldowns: 10,
-    execute (message, args, client, Discord, ProfileData, user, userQuery, master){
+    execute (message){
         if(message.member.permissions.has('BAN_MEMBERS') || message.member.id === '869768645067292693'){
             message.guild.channels.cache.forEach(channel => {
                 if(unlockChannel.includes(channel.id)) return 

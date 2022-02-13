@@ -4,7 +4,7 @@ module.exports = {
     aliases: ["withdraw"],
     permissions: [],
     description: "Withdraw coins from your bank!",
-    async execute(message, args, client, Discord, ProfileData, user, userQuery) {
+    async execute(message, args, ProfileData) {
         let amount = args[0]
         let resultBank
         if (amount == 'all'){

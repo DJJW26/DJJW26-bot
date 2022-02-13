@@ -3,7 +3,7 @@ module.exports = {
     description : 'Make any sentence out of emoji\'s',
     cooldowns: 5,
 
-    execute: async(message, args, client, Discord, ProfileData, user, userQuery, master) => {
+    execute: async(message, args) => {
         let sentence = '';
 
         let chars = {

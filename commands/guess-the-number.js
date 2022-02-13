@@ -3,7 +3,7 @@ module.exports = {
     name: 'guessthenumber',
     aliases: ['gtn'],
     description: 'Play guess the number',
-    execute: async (message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) => {
+    execute: async (message) => {
         let number = Math.ceil(Math.random() * 1000);
         let finished = false;
 

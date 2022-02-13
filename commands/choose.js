@@ -1,7 +1,7 @@
 module.exports = {
     name: 'choose',
     description: 'chooses between args',
-    execute(message, args, client, Discord, ProfileData, user, userQuery) {
+    execute(message) {
         const prefix = process.env.PREFIX;
         if (message.content.includes(',')) {
             const commaArgs = message.content.slice(prefix.length).split(/,+/);

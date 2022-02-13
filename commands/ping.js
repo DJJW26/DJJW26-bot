@@ -3,7 +3,7 @@ module.exports = {
   description: "Ping the bot",
   aliases: 'latency',
   cooddowns: 1,
-  execute(message, args, client, Discord, ProfileData, user, userQuery) {
+  execute(message, client, Discord) {
     return message.channel.send("Pinging...").then((sent) => {
       const embed = new Discord.MessageEmbed()
       .setColor('RANDOM')

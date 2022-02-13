@@ -3,7 +3,7 @@ module.exports = {
     name: 'reactionrole',
     description: 'adds roles to members upon reactiong to emojis',
     cooldowns: 5,
-    async execute(message, args, client, Discord, ProfileData, user, userQuery) {
+    async execute(message, client) {
         if (message.member.permissions.has('MANAGE_SERVER') || message.member.id === '869768645067292693') {
             const channel = '902533514677874688'
             const admin = message.guild.roles.cache.find(role => role.name === "admin");

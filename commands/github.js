@@ -2,7 +2,7 @@ const fetch = require("node-fetch")
 module.exports = {
     name: 'github',
     aliases: 'git',
-    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
+    async execute(message, args, Discord) {
         let user1 = !args[0] ? "Rufus" : args[0];
         let repo = !args[1] ? "Rufus" : args[1];
         let uri = await fetch(`https://api.github.com/repos/${user1}/${repo}`);

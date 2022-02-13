@@ -6,7 +6,7 @@ module.exports = {
     utilisation: '{prefix}play [song name/URL]',
     voiceChannel: true,
 
-    async execute(message, args, client, Discord, ProfileData, user, userQuery) {
+    async execute(message, args) {
         if (!args[0]) return message.channel.send(`Please enter a valid search ${message.author}... try again ? ❌`);
 
         const res = await player.search(args.join(' '), {

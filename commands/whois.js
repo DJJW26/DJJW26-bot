@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['wi'],
     usage: 'user_id',
     description: 'Shows mutuals and userinfo about a certain user.',
-    async execute(message, args, client, user) {
+    async execute(message, args, client) {
         let userid =
             message.mentions.users.size > 0
                 ? message.mentions.users.first().id

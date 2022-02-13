@@ -1,7 +1,7 @@
 module.exports = {
     name: 'rps',
     description: 'Rock Paper Scissors.',
-    async execute(message, args, client, Discord, ProfileData, user, userQuery, master) {
+    async execute(message, client, Discord) {
         let hand = [{ txt: 'Rock', emoji: '✊', index: 0 }, { txt: 'Paper', emoji: '🤚', index: 1 }, { txt: 'Scissors', emoji: '✌️', index: 2 }]; // Defining Moves
         let botMove = hand[Math.floor(Math.random() * 3)]; 
 

@@ -2,7 +2,7 @@ module.exports = {
     name: 'invite',
     description: "sends bot invite",
     cooldowns: 1,
-    execute(message, args, client, Discord, ProfileData, user, userQuery) {
+    execute(message, Discord) {
         const newEmbed = new Discord.MessageEmbed()
             .setColor('#2d84d2')
             .setTitle('Invite this bot to your server')

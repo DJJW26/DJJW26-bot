@@ -3,7 +3,7 @@ module.exports = {
     name: 'ticket',
     description: 'creates a message that will create a ticket',
     cooldowns: 600,
-    async execute(message, args, client, Discord, ProfileData, user, userQuery, master) {
+    async execute(message, Discord) {
         const ticketEmoji = '📨';
         const ticketEmbed = new Discord.MessageEmbed()
             .setColor('BLUE')

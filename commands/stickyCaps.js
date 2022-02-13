@@ -2,7 +2,7 @@ module.exports = {
     name: 'stickyCaps',
     description: 'changes normal sentence to sticky caps',
     aliases: ['sc'],
-    async execute(message, args, client, Discord, ProfileData, user, userQuery, master) {
+    async execute(message, args) {
         let sentence = '';
 
         let chars = {

@@ -11,7 +11,7 @@ module.exports = {
     aliases: ['img'],
     description: 'scrapes an image outta google',
     cooldowns: 10,
-    async execute(message, args, client, Discord, ProfileData, user, userQuery, master) {
+    async execute(message, args) {
         const image_query = args.join(' ');
         if(!image_query) return message.channel.send('Please enter an image name');
 

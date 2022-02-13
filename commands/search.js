@@ -5,7 +5,7 @@ module.exports = {
     aliases: [],
     permissions: [],
     description: "Search for some coin!",
-    async execute(message, args, client, Discord, ProfileData, user, userQuery) {
+    async execute(message) {
 
         const locations = [
             "car",

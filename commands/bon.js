@@ -2,7 +2,7 @@ module.exports = {
     name: 'bon',
     description: 'bons a member',
     cooldowns: 2,
-    execute(message, args, client, Discord, ProfileData, user, userQuery, master){
+    execute(message){
         const member = message.mentions.users.first();
         const userID = message.guild?.members?.cache?.get(member.id);
         const name = member.username;

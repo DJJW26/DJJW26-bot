@@ -2,7 +2,7 @@ module.exports = {
     name: 'unmute',
     description: 'unmutes a member',
     cooldowns: 1,
-    execute(message, args, client, Discord, ProfileData, user, userQuery, master){
+    execute(message){
         const target = message.mentions?.users?.first();
         if(member.message.permissions.has('BAN_MEMBERS')|| message.member.id === '869768645067292693'){
             if(target) {

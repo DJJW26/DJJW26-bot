@@ -4,7 +4,7 @@ const jaro = require('jaro-winkler');
 module.exports = {
     name: 'covid',
     description: 'Get COVID-19 Statistics',
-    async execute(message, args, client, Discord, ProfileData, user, userQuery, master) {
+    async execute(message, args, Discord) {
         let res;
         let country;
         let covidImg = 'https://media.discordapp.net/attachments/239446877953720321/691020838379716698/unknown.png'

@@ -4,7 +4,7 @@ module.exports = {
     permissions: [],
     cooldown: 5,
     description: 'check users balance',
-    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery) {
+    async execute(message, args, Discord, ProfileData, profileModel) {
         let userBal = null;
         let userBal1 = null;
         if (args.length > 0) {

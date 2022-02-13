@@ -3,7 +3,7 @@ module.exports = {
     description: 'rolls a dice',
     aliases: ['roll'],
     cooldowns: 2,
-    execute(message, args, client, Discord, ProfileData, user, userQuery){
+    execute(message){
         let max = 6;
         let min = 1;
         const dice = Math.floor(Math.random() * (max - min + 1) + min);

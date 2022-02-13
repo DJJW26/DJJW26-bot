@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
     name: 'nasa',
-    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
+    async execute(message, args, Discord) {
         if (!args) {
             message.channel.send("Enter a valid term to search for!");
         }

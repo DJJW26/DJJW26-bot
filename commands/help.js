@@ -2,7 +2,7 @@ module.exports = {
     name: 'help',
     description: 'send an embed for help',
     cooldowns: 1,
-    execute(message, args, client, Discord, ProfileData, user, userQuery, master) {
+    execute(message, Discord) {
         const helpEmbed = new Discord.MessageEmbed()
         .setColor('PURPLE')
         .setTitle('COMMANDS')

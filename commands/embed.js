@@ -5,7 +5,7 @@ module.exports = {
     description: "make embed",
     cooldowns: 5,
 
-    async execute(message, args, client, Discord, ProfileData, user, userQuery, master){
+    async execute(message, args, Discord){
         if(!message.member.permissions.has('MANNAGE_MESSAGES')) return 
         let title = args[0]
         let color = args[1] 

@@ -4,7 +4,7 @@ module.exports = {
     name: 'slowmode',
     description: 'changes the slowmode',
     aliases: ['sm', 'slow'],
-    execute(message, args, client, Discord, ProfileData, user, userQuery) {
+    execute(message, args) {
         if (message.member.permissions.has('BAN_MEMBERS') || message.member.id === '869768645067292693') {
             if (args[0] < 21600) {
                 message.channel.setRateLimitPerUser(args[0]);

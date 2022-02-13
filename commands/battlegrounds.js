@@ -17,7 +17,7 @@ module.exports = {
      * @param {Message} message
      * @param {String[]} args
      */
-    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
+    async execute(message, client) {
         if (!message.member.permissions.has('ADMINISTRATOR')) {
             message.channel.send('Admin only command lol')
             return

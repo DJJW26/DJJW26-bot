@@ -4,7 +4,7 @@ module.exports = {
     name: 'lyrics',
     description: 'Searches song lyrics from Google',
     cooldowns: 1,
-    async execute(message, args, client, Discord, ProfileData, user, userQuery, master) {
+    async execute(message, args, Discord) {
         if (!args) return message.channel.send('No song specified'); 
 
         const embed = new Discord.MessageEmbed()

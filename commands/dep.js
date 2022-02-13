@@ -4,7 +4,7 @@ module.exports = {
     aliases: ["deposit"],
     permissions: [],
     description: "Deposit coins into your bank!",
-    async execute(message, args, client, Discord, ProfileData, user, userQuery) {
+    async execute(message, args, ProfileData) {
         let amount = args[0]
         let resultBank
         if (amount == 'all'){

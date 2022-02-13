@@ -1,7 +1,7 @@
 module.exports = {
     name: 'bot',
     aliases: 'botclear',
-    execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
+    execute(message) {
         try {
             message.channel.messages.fetch().then(messages => {
                 const botMessages = messages.filter(msg => msg.author.bot);

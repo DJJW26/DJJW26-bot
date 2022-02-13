@@ -2,7 +2,7 @@ module.exports = {
     name: 'ban',
     description: 'bans a member',
     cooldowns: 5,
-    execute(message, args, client, Discord, ProfileData, user, userQuery){
+    execute(message){
         const member = message.mentions.users.first();
         const userID = message.guild.members.cache.get(member.id);
         const name = member.username;

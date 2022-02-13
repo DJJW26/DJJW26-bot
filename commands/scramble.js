@@ -1,7 +1,7 @@
 module.exports = {
     name : 'scramble',
     description: 'Attempt to unscramble the given scrambled word',
-    execute : async(message, args, client, Discord, ProfileData, user, userQuery, master) => {
+    execute : async(message) => {
         let words = ['childhood', 'imagination', 'renaissance', 'ambulance', 'fluorescent', 'philosophical', 'vernacular', 'international', 'embarrassment', 'problematic' ];
         let word = words[parseInt(Math.random() * words.length)];
         let wrong = 0;

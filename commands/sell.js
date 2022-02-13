@@ -1,6 +1,6 @@
 module.exports = {
     name: "sell",
-    async execute(message, args, client, Discord, ProfileData, user, userQuery){
+    async execute(message, args, ProfileData, user, userQuery){
       let item = user.inventory.find(v => v.name === args[0].toLowerCase());
       if(!item){
         return message.channel.send("No Item Found In Inventory");

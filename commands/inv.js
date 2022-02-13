@@ -1,6 +1,6 @@
 module.exports = {
     name: "inv",
-    async execute(message, args, client, Discord, ProfileData, user, userQuery){
+    async execute(message, Discord, user){
       let temp_items = user.inventory.map(item => item.name);
       let items = [];
   

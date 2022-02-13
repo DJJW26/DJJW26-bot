@@ -1,7 +1,7 @@
 const fs = require('fs');
 module.exports = {
   name: "shop",
-  async execute(message, args, client, Discord, ProfileData, user, userQuery){
+  async execute(message, args, Discord){
     let shop_data = JSON.parse(Buffer.from(fs.readFileSync('./shop.json')).toString());
     let index = (args[0] || "1");
     let page = shop_data.pages[index];

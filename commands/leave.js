@@ -2,7 +2,7 @@ module.exports = {
     name: 'leave',
     description: 'stop the bot and leave the channel',
     cooldowns: 1,
-    async execute(message, args, client, Discord, ProfileData, user, userQuery, master) {
+    async execute(message) {
         const voiceChannel = message.member.voice.channel;
  
         if(!voiceChannel) return message.channel.send("You need to be in a voice channel to stop the music!");

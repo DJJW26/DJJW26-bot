@@ -3,7 +3,7 @@ const request = require("request");
 module.exports = {
     name: 'interesting',
     aliases: 'interest',
-    execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
+    execute(message, Discord) {
         let urls = ["https://meme-api.herokuapp.com/gimme/mildlyinteresting", "https://meme-api.herokuapp.com/gimme/interestingasfuck", "https://meme-api.herokuapp.com/gimme/damnthatsinteresting"];
 
         let subreddit = urls[Math.floor(Math.random() * urls.length)];
