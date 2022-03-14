@@ -4,7 +4,7 @@ module.exports = {
     permissions: [],
     cooldown: 5,
     description: 'check users balance',
-    async execute(message, args, Discord, ProfileData, profileModel) {
+    async execute(message, args, Discord, ProfileData) {
         let userBal = null;
         let userBal1 = null;
         if (args.length > 0) {
@@ -42,6 +42,7 @@ module.exports = {
         } catch (err) {
             console.log(err)
         }
+            
         const balEmbed = new Discord.MessageEmbed()
             .setTitle(`**${userBal1.username}** bal`)
             .setColor('RANDOM')

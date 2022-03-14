@@ -3,44 +3,38 @@ module.exports = {
     description: 'changes normal sentence to sticky caps',
     aliases: ['sc'],
     async execute(message, args) {
-        let sentence = '';
-
-        let chars = {
-            chara: 'A',
-            charb: 'b',
-            charc: 'c',
-            chard: 'd',
-            chare: 'E',
-            charf: 'f',
-            charg: 'g',
-            charh: 'h',
-            chari: 'i',
-            charj: 'j',
-            chark: 'k',
-            charl: 'L',
-            charm: 'm',
-            charn: 'n',
-            charo: 'O',
-            charp: 'p',
-            charq: 'q',
-            charr: 'r',
-            chars: 's',
-            chart: 't',
-            charu: 'U',
-            charv: 'v',
-            charw: 'w',
-            charx: 'x',
-            chary: 'y',
-            charz: `z`
+        //a e i l o u 
+        let prefix = '%';
+        let hm = null;
+        if(message.content.includes("%sc ")){
+            hm = message.content.replace('%sc ','');
         }
-
-        for(let e of args.join(' ')) {
-            if(/([a-z])/gim.test(e)) sentence += `:regional_indicator_${e.toLowerCase()}:`
-            else if(/\s/.test(e)) sentence += ' '
-            else if(/([1-9])/.test(e) || ['+', '-', '*', '#', '!', '÷'].includes(e)) sentence += chars[`char${e}`]
-            else sentence += e
+        else{
+            hm = message.content.replace('%stickyCaps ','');
         }
+        let args1 = hm.slice(prefix.length).split();
 
-        message.channel.send(sentence);
+        for(let i = 0; i <= args1.length;i++){
+            if(args1[i] == 'a'){
+                args1[i]=='A';
+            }
+            else if(args1[i] == 'e'){
+                args1[i]== 'E';
+            }
+            else if(args1[i] == 'i'){
+                args1[i]=='I';
+            }
+            else if(args1[i] == 'l'){
+                args1[i]== 'L';
+            }
+            else if(args1[i] == 'o'){
+                args1[i]=='O';
+            }
+            else if(args1[i] == 'u'){
+                args1[i]=='U';
+            }
+        }
+        let sentence = args1.toString();
+        message.reply(sentence);
     }
 }

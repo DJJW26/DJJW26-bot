@@ -10,13 +10,6 @@ const { description } = require('./among-us')
 module.exports = {
     name: 'battlegrounds',
     aliases: ['pubg', 'fortnite', 'bg', 'arena'],
-    fhOnly: false,
-    disabledChannels: [],
-    /**
-     * @param {Client} client
-     * @param {Message} message
-     * @param {String[]} args
-     */
     async execute(message, client) {
         if (!message.member.permissions.has('ADMINISTRATOR')) {
             message.channel.send('Admin only command lol')

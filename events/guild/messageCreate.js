@@ -116,5 +116,18 @@ module.exports = async (Discord, client, message) => {
         user = await profileModel.findOne(userQuery);
     };
 
-    if (command) command.execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master);
+    const afks = new Map();
+
+    if(afks.has(`<@${message.author.id}>`)){
+        message.reply('Welcome back! I have removed your afk.');
+        afks.delete(`<@${message.author.id}>`);
+    }
+    if(!message.mentions.users.size){}
+    else{
+        if(afks.has(`<@${message.mentions.users.first().id}>`)){
+            message.reply(`That person is afk, they have left this message for you: ${afks.get(`<@${message.mentions.users.first().id}>`)}`);
+        }
+    }
+
+    if (command) command.execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afks);
 }
