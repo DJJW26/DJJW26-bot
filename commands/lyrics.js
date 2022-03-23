@@ -1,5 +1,6 @@
 const lyrics = require('lyrics-finder');
 const yt = require('yt-search'); 
+const {MessageEmbed} = require('discord.js');
 module.exports = {
     name: 'lyrics',
     description: 'Searches song lyrics from Google',
@@ -7,7 +8,7 @@ module.exports = {
     async execute(message, args, Discord) {
         if (!args) return message.channel.send('No song specified'); 
 
-        const embed = new Discord.MessageEmbed()
+        const embed = new MessageEmbed()
             .setColor('RANDOM')
             .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL()); 
         let lyric = await lyrics(args.join(' ')); 
