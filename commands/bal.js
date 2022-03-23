@@ -1,3 +1,5 @@
+const {MessageEmbed} = require('discord.js');
+
 module.exports = {
     name: 'bal',
     aliases: ['balance', 'cash', 'money', 'coins'],
@@ -5,6 +7,7 @@ module.exports = {
     cooldown: 5,
     description: 'check users balance',
     async execute(message, args, Discord, ProfileData) {
+        const profileModel = require(`./../models/profileSchema`)
         let userBal = null;
         let userBal1 = null;
         if (args.length > 0) {
@@ -44,9 +47,9 @@ module.exports = {
             console.log(err)
         }
 
-        const balEmbed = new Discord.MessageEmbed()
+        const balEmbed = new MessageEmbed()
             .setTitle(`**${userBal1.username}** bal`)
-            .setColor('RANDOM')
+            .setColor('GREEN')
             .setThumbnail(`${userBal1.displayAvatarURL()}`)
             .addField('WALLET :', `${ProfileData.coins}`)
             .addField('BANK :', `${ProfileData.bank}`)

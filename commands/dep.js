@@ -19,14 +19,15 @@ module.exports = {
         }
         if ( amount === 'all'){
             resultBank = ProfileData.coins + ProfileData.bank
+            var balCoins = ProfileData.coins;
             await profileModel.findOneAndUpdate(
                     {
                         userID: message.author.id,
                     },
                     {
                         $inc: {
-                            coins: -ProfileData.coins,
-                            bank: ProfileData.coins,
+                            coins: -balCoins,
+                            bank: balCoins,
                         },
                     }
                 );

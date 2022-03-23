@@ -7,6 +7,7 @@ module.exports = {
     aliases: ['fortuneCookie', 'fortune', 'cookie'],
     description: 'open a fortune cookie',
     async execute(message) {
+        const profileModel = require(`./../models/profileSchema`)
         try {
             ProfileData = await profileModel.findOne({ userID: message.author.id })
             if (!ProfileData) {
@@ -25,8 +26,8 @@ module.exports = {
                     inventory: [Item]
                 })
                 profile.save();
+                ProfileData = await profileModel.findOne({ userID: message.author.id })
             }
-            ProfileData = await profileModel.findOne({ userID: message.author.id })
         } catch (err) {
             console.log(err)
         }
@@ -43,6 +44,21 @@ module.exports = {
                 .setFooter(`${message.author.username}'s fortune cookie`)
                 .setTimestamp();
             message.channel.send({ embeds: [embed] });
+            try {
+
+                const increase = await profileModel.findOneAndUpdate(
+                    {
+                      userID: message.author.id,
+                    },
+                    {
+                      $inc: {
+                        coins: -100,
+                      },
+                    }
+                  );
+            } catch(err){
+                console.log(err);
+            }
         }
         else {
             return message.reply('you need atleast 100 coins to open a fortune cookie, we dont give em for free');
