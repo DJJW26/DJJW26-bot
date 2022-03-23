@@ -16,12 +16,12 @@ module.exports = {
                 }
             }
         }
-        else{
+        else {
             userBal = message.author.id;
             userBal1 = message.author;
         }
         try {
-            ProfileData = await profileModel.findOne({ userID: userBal})
+            ProfileData = await profileModel.findOne({ userID: userBal })
             if (!ProfileData) {
                 let Item = await profileModel.create({
                     name: { type: String, required: true },
@@ -39,10 +39,11 @@ module.exports = {
                 })
                 profile.save();
             }
+            ProfileData = await profileModel.findOne({ userID: userBal })
         } catch (err) {
             console.log(err)
         }
-            
+
         const balEmbed = new Discord.MessageEmbed()
             .setTitle(`**${userBal1.username}** bal`)
             .setColor('RANDOM')

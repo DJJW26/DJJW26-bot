@@ -24,6 +24,7 @@
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^4.4.1",
     "figlet": "^1.5.2",
+    "fortune-cookie": "^0.0.1",
     "fs": "^0.0.1-security",
     "glob": "^7.2.0",
     "google-tts-api": "^2.0.2",
