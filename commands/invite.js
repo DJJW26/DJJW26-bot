@@ -1,9 +1,11 @@
+const {MessageEmbed} = require('discord.js');
+
 module.exports = {
     name: 'invite',
     description: "sends bot invite",
     cooldowns: 1,
     execute(message, Discord) {
-        const newEmbed = new Discord.MessageEmbed()
+        const newEmbed = new MessageEmbed()
             .setColor('#2d84d2')
             .setTitle('Invite this bot to your server')
             .setURL('https://discord.com/api/oauth2/authorize?client_id=873040545327501382&permissions=8&scope=bot%20applications.commands')

@@ -75,7 +75,7 @@ module.exports = {
                 })
 
                 const mainMessage = await message.channel.send(
-                    `Alright! The button will appear in a few seconds, good luck!`
+                    `Alright! ${user1}, ${user2}, The button will appear in a few seconds, good luck!`
                 )
                 let mainButton = new MessageButton()
                     .setStyle('SUCCESS')

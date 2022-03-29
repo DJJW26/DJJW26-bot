@@ -1,29 +1,32 @@
+const { MessageEmbed } = require('discord.js');
+const { MessageActionRow } = require('discord.js');
+const { MessageButton } = require('discord.js');
 module.exports = {
     name: 'rps',
     description: 'Rock Paper Scissors.',
-    async execute(message, client, Discord) {
+    async execute(message, args, client) {
         let hand = [{ txt: 'Rock', emoji: '✊', index: 0 }, { txt: 'Paper', emoji: '🤚', index: 1 }, { txt: 'Scissors', emoji: '✌️', index: 2 }]; // Defining Moves
         let botMove = hand[Math.floor(Math.random() * 3)]; 
 
         let rpsMsg = await message.channel.send({
             embeds: [
-                new Discord.MessageEmbed() 
+                new MessageEmbed() 
                     .setColor('RANDOM')
                     .setTitle('Rock Paper Scissors')
                     .setDescription('Choose a handsign')
             ],
             components: [
-                new Discord.MessageActionRow()
+                new MessageActionRow()
                     .addComponents(
-                        new Discord.MessageButton()
+                        new MessageButton()
                             .setCustomId(`rps_rock`)
                             .setLabel("✊ Rock")
                             .setStyle('PRIMARY'),
-                        new Discord.MessageButton()
+                        new MessageButton()
                             .setCustomId(`rps_paper`)
                             .setLabel("🤚 Paper")
                             .setStyle('PRIMARY'),
-                        new Discord.MessageButton()
+                        new MessageButton()
                             .setCustomId(`rps_scissors`)
                             .setLabel("✌️ Scissors")
                             .setStyle('PRIMARY')
