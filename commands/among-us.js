@@ -11,6 +11,7 @@ module.exports = {
     fhOnly: false,
     disabledChannels: [],
     description: 'Start a game of amogus, right in discord!',
+    cooldown: 10,
     /**
      * @param {Client} client
      * @param {Message} message

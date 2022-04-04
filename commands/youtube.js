@@ -4,6 +4,7 @@ const yts = require('yt-search');
 module.exports = {
     name: 'youtube',
     aliases: ['yt', 'yt-search'],
+    cooldown: 5,
     async execute(message, args) {
         if (!args.length) return message.reply('Provide video name')
         const embed = new MessageEmbed()

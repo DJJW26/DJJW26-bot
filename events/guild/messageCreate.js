@@ -1,8 +1,6 @@
 require('dotenv').config();
+const cooldown = require('../../models/cooldownSchema.js')
 const Discord = require('discord.js');
-
-//const cooldowns = new Map();
-//const time_stamps = new Discord.Collection()
 
 module.exports = async (Discord, client, message) => {
     const prefix = process.env.PREFIX;
@@ -35,7 +33,7 @@ module.exports = async (Discord, client, message) => {
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const cmd = args.shift().toLowerCase();
-    const master = ['869768645067292693','928895679043080192'];
+    const master = ['869768645067292693', '928895679043080192'];
 
     const command = client.commands.get(cmd) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
 
@@ -88,24 +86,6 @@ module.exports = async (Discord, client, message) => {
             return message.channel.send(`Missing Permissions: \`${invalidPerms}\``);
         }
     }
-/*
-    const current_time = Date.now();
-    const time_stamps = cooldowns.get(command.name);
-    const cooldown_amount = (command.cooldown) * 1000;
-
-    if (time_stamps.has(message.author.id)) {
-      const expiration_time = time_stamps.get(message.author.id) + cooldown_amount;
-
-     if (current_time < expiration_time) {
-        const time_left = (expiration_time - current_time) / 1000;
-
-        return message.reply(`Please wait ${time_left.toFixed(1)} more seconds before using ${command.name}`);
-     }
-    }
-
-    time_stamps.set(message.author.id, current_time);
-    setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
-*/
     let userQuery = { userID: message.author.id }
 
     let user = await profileModel.findOne(userQuery);
@@ -118,16 +98,56 @@ module.exports = async (Discord, client, message) => {
 
     const afks = new Map();
 
-    if(afks.has(`<@${message.author.id}>`)){
+    if (afks.has(`<@${message.author.id}>`)) {
         message.reply('Welcome back! I have removed your afk.');
         afks.delete(`<@${message.author.id}>`);
     }
-    if(!message.mentions.users.size){}
-    else{
-        if(afks.has(`<@${message.mentions.users.first().id}>`)){
+    if (!message.mentions.users.size) { }
+    else {
+        if (afks.has(`<@${message.mentions.users.first().id}>`)) {
             message.reply(`That person is afk, they have left this message for you: ${afks.get(`<@${message.mentions.users.first().id}>`)}`);
         }
     }
+    async function commandExecute() {
+        if (command) command.execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afks);
+    }
 
-    if (command) command.execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afks);
+    if(command.cooldown) {
+        const current_time = Date.now();
+        const cooldown_amount = (command.cooldown) * 1000
+    
+        cooldown.findOne({ userId: message.author.id, cmd: command.name }, async(err, data) => {
+            if(data) {
+                const expiration_time = data.time + cooldown_amount;
+            
+                if(current_time < expiration_time) {
+                    const time_left = (expiration_time -  current_time) / 1000
+        
+                    if(time_left.toFixed(1) >= 3600){
+                        let hour = (time_left.toFixed(1) / 3600);
+                        return message.reply(`Please wait ${parseInt(hour)} more hours before using \`${command.name}\`!`)
+                    }
+                    if(time_left.toFixed(1) >= 60) {
+                        let minute = (time_left.toFixed(1) / 60);
+                        return message.reply(`Please wait ${parseInt(minute)} more minutes before using \`${command.name}\`!`)
+                    }
+                    let seconds = (time_left.toFixed(1));
+                    return message.reply(`Please wait ${parseInt(seconds)} more seconds before using \`${command.name}\`!`)
+                } else {
+                    await cooldown.findOneAndUpdate({ userId: message.author.id, cmd: command.name }, { time: current_time });
+                    commandExecute();
+                }
+            } else {
+                commandExecute();
+                new cooldown({
+                    userId: message.author.id,
+                    cmd: command.name,
+                    time: current_time,
+                    cooldown: command.cooldown,
+                }).save();
+            }
+        })
+    } else {
+        commandExecute();
+    };
 }

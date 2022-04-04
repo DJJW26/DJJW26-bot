@@ -4,6 +4,7 @@ module.exports = {
     name: 'fastclick',
     usage: '<USER>',
     description: 'Use your skills to win fights, the fastest to click wins!',
+    cooldown: 5,
     /**
      * @param {Message} message
      */

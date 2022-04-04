@@ -4,7 +4,7 @@ module.exports = {
     name: 'bal',
     aliases: ['balance', 'cash', 'money', 'coins'],
     permissions: [],
-    cooldown: 5,
+    cooldown: 3,
     description: 'check users balance',
     async execute(message, args, Discord, ProfileData) {
         const profileModel = require(`./../models/profileSchema`)
