@@ -12,6 +12,7 @@
     "@discordjs/opus": "^0.6.0",
     "@discordjs/voice": "^0.7.5",
     "@google-cloud/text-to-speech": "^3.4.0",
+    "better-ms": "^1.1.7",
     "covid19-api": "^1.2.1",
     "discord-player": "^5.2.0",
     "discord-tts": "^1.2.1",
