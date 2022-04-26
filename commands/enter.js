@@ -1,8 +1,8 @@
 module.exports = {
-    name: 'exit',
+    name: 'enter',
     description: 'shows that a user has left the chat',
     cooldowns: 1,
-    execute(message, user){
-        message.channel.send(`**${user}** has entered the chat`);
+    execute(message){
+        message.channel.send(`**${message.author.username}** has entered the chat`);
     }
 }

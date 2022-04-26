@@ -4,8 +4,8 @@ module.exports = {
   aliases: [],
   permissions: ["ADMINISTRATOR"],
   description: "give a player some coins",
-  async execute(message, args, master) {
-    if (message.member.id == '869768645067292693') return message.channel.send(`Only **DJJW26** can run this command`);
+  async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afks) {
+    if (message.author.id === 869768645067292693) return message.channel.send(`Only **DJJW26** can run this command`);
     if (!args.length) return message.channel.send("You need to mention a player to give them coins");
     const amount = args[1];
     const target = message.mentions.users.first();

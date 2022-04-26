@@ -14,6 +14,7 @@
     "@google-cloud/text-to-speech": "^3.4.0",
     "better-ms": "^1.1.7",
     "covid19-api": "^1.2.1",
+    "crypto": "^1.0.1",
     "discord-player": "^5.2.0",
     "discord-tts": "^1.2.1",
     "discord.js": "^13.6.0",

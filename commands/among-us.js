@@ -8,21 +8,14 @@ const {
 module.exports = {
     name: 'amongus',
     aliases: ['amogus'],
-    fhOnly: false,
-    disabledChannels: [],
     description: 'Start a game of amogus, right in discord!',
     cooldown: 10,
-    /**
-     * @param {Client} client
-     * @param {Message} message
-     * @param {String[]} args
-     */
-    async execute(message, client) {
-        if (!message.member.permissions.has('MANAGE_GUILD') || message.author.id == '869768645067292693') {
+    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afksmessage) {
+        /*if (!message.member.permissions.has('MANAGE_GUILD') || message.author.id == 869768645067292693) {
             return message.reply(
                 'You need the `MANAGE_GUILD` permission to run this command.'
             )
-        }
+        }*/
 
         const emojiArray = [
             '917726679214985246',

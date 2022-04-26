@@ -5,13 +5,13 @@ module.exports = {
   permissions: ["ADMINISTRATOR"],
   description: "removes some coins from a player",
   async execute(message, args, master) {
-    if (master.includes(message.member.id)) return message.channel.send(`Only **DJJW26** can run this command`);
+    if (message.author.id != 869768645067292693) return message.channel.send(`Only **DJJW26** can run this command`);
     if (!args.length) return message.channel.send("You need to mention a player");
     const amount = args[1];
     const target = message.mentions.users.first();
     if (!target) return message.channel.send("That user does not exist");
 
-    if (amount % 1 != 0 || amount <= 0) return message.channel.send("Deposit amount must be a whole number");
+    if (amount % 1 != 0 || amount <= 0) return message.channel.send("Amount must be a whole number");
 
     try {
       const targetData = await profileModel.findOne({ userID: target.id });

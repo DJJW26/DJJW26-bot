@@ -6,7 +6,7 @@ module.exports = {
     permissions: [],
     cooldown: 3,
     description: 'check users balance',
-    async execute(message, args, Discord, ProfileData) {
+    async execute(message, args, client, Discord, ProfileData, user, userQuery, master, afks) {
         const profileModel = require(`./../models/profileSchema`)
         let userBal = null;
         let userBal1 = null;

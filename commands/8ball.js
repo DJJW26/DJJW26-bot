@@ -9,7 +9,7 @@ module.exports = {
             "Very doubtful.",
         ];
         if (!args.length) {
-            message.reply('ask a question')
+            message.reply('Ask a question')
         }
         else {
             const number = Math.floor(Math.random() * responses.length);

@@ -29,8 +29,8 @@ module.exports = {
             const max1 = robberData.coins;
             const min = 5000;
 
-            const rand = Math.random() * (max - min) + min;
-            const rand1 = Math.random() * (max1 - min) + min;
+            const rand = Math.floor(Math.random() * (max - min) + min);
+            const rand1 = Math.floor(Math.random() * (max1 - min) + min);
             var luck = null;
 
             const robEmbed = new Discord.MessageEmbed()

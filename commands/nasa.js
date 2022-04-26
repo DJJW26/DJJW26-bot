@@ -2,9 +2,9 @@ const fetch = require("node-fetch");
 
 module.exports = {
     name: 'nasa',
-    async execute(message, args, Discord) {
+    async execute(message, args, client, Discord) {
         if (!args) {
-            message.channel.send("Enter a valid term to search for!");
+            return message.channel.send("Enter a valid term to search for!");
         }
         let term = args.join(' ');
         let response = await fetch(`https://images-api.nasa.gov/search?q=${term}`);
