@@ -8,7 +8,7 @@ module.exports = {
         let embed = new Discord.MessageEmbed()
             .setColor('GREEN')
             .setTitle(`${message.author.username}'s daily coins`)
-            .setDescription('\n 25000 daily coins have been added to your wallet!\n')
+            .setDescription('\n 25,000 daily coins have been added to your wallet!\n')
 
         await profileModel.findOneAndUpdate(
             {

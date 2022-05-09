@@ -2,8 +2,7 @@ const profileModel = require("../models/profileSchema");
 
 module.exports = {
     name: "search",
-    aliases: [],
-    permissions: [],
+    aliases: ['scout'],
     description: "Search for some coin!",
     async execute(message) {
 

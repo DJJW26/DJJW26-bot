@@ -47,12 +47,15 @@ module.exports = {
             console.log(err)
         }
 
+        let wallet = ProfileData.coins.toLocaleString('en-US')
+        let bank = ProfileData.bank.toLocaleString('en-US')
+
         const balEmbed = new MessageEmbed()
             .setTitle(`**${userBal1.username}** bal`)
             .setColor('GREEN')
             .setThumbnail(`${userBal1.displayAvatarURL()}`)
-            .addField('WALLET :', `${ProfileData.coins}`)
-            .addField('BANK :', `${ProfileData.bank}`)
+            .addField('WALLET :', `${wallet}`)
+            .addField('BANK :', `${bank}`)
             .setFooter('what a scrub')
 
         message.channel.send({ embeds: [balEmbed] });

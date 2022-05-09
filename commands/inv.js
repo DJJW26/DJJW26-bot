@@ -1,28 +1,23 @@
+const { MessageEmbed } = require('discord.js');
+const Inventory = require('../models/inventory');
+
 module.exports = {
-    name: "inv",
-    async execute(message, Discord, user){
-      let temp_items = user.inventory.map(item => item.name);
-      let items = [];
-  
-      temp_items.forEach(itemName => {
-        if(!items.find(v => v.name === itemName)){
-          items.push({
-            amount: temp_items.filter(temp_item => temp_item === itemName).length,
-            name: itemName
-          });
-        }
+  name: "inv",
+  description: 'Lets the user check their inventory',
+  aliases: ['inventory'],
+  async execute(message, args, client, Discord) {
+    Inventory.findOne({ User: message.author.id }, async (err, data) => {
+      if (!data) return message.reply('Nothing to see here')
+      const mappedData = Object.keys(data.Inventory).map((key) => {
+        return `${key} ─ ${data.Inventory[key]}`
+      }).join(' \n');
+
+      message.channel.send({
+        embeds: [new MessageEmbed()
+          .setColor('GREEN')
+          .setTitle(`${message.author.username}'s inventory`)
+          .setDescription(`${mappedData}`)]
       });
-  
-      items = items.map(item => `**${item.name}** x\`${item.amount}\``)
-  
-      const inventory = new Discord.MessageEmbed()
-      .setColor('RANDOM')
-      .setTitle("Inventory")
-      .setAuthor(message.author.username, message.author.avatarURL())
-      .setDescription(`${items.join('\n\t')}`)
-  
-      await message.channel.send({embeds: [inventory] });
-  
-    }
+    });
   }
-  
+}

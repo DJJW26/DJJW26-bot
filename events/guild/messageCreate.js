@@ -1,6 +1,7 @@
 require('dotenv').config();
 const cooldown = require('../../models/cooldownSchema.js')
 const Discord = require('discord.js');
+const Inventory = require('../../models/inventory');
 
 module.exports = async (Discord, client, message) => {
     const prefix = process.env.PREFIX;
@@ -26,6 +27,11 @@ module.exports = async (Discord, client, message) => {
                 inventory: [Item]
             })
             profile.save();
+
+            new Inventory({
+                User: message.author.id,
+                Inventory: {},
+              }).save();
         }
     } catch (err) {
         console.log(err)

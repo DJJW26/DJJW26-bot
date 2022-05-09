@@ -2,7 +2,6 @@ module.exports = {
     name: 'avatar',
     aliases: ['icon', 'pfp', 'profilepic', 'av'],
     description: 'Return a user(s) avatar picture!',
-    //Use your own execute parameters
     execute(message) {
 
         if (!message.mentions.users.size) {
