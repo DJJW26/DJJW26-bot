@@ -4,7 +4,7 @@ const items = require('../shopItems')
 const { MessageEmbed, MessageButton, MessageActionRow } = require('discord.js');
 module.exports = {
   name: "sell",
-  async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afks) {
+  async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
     if (!args[0]) return message.reply('Please specify an item to sell');
     const itemToSell = args[0];
 

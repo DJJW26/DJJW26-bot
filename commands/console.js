@@ -1,7 +1,7 @@
 module.exports = {
     name: 'console',
     description: 'logs smth in the console',
-    execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afks) {
+    execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
         const n = message.content.replace('%console ', '');
         console.log(n);
         message.react('👍');

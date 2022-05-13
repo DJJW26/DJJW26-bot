@@ -4,6 +4,7 @@ module.exports = {
     cooldowns: 2,
     execute(message){
         const member = message.mentions.users.first();
+        if(!member) return message.reply('please enter a user')
         const userID = message.guild?.members?.cache?.get(member.id);
         const name = member.username;
         if (message.member.permissions.has('BAN_MEMBERS')|| message.member.id === '869768645067292693'){

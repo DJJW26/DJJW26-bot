@@ -10,7 +10,7 @@ module.exports = async (Discord, client, message) => {
     let ProfileData;
     const profileModel = require(`../../models/profileSchema`)
     try {
-        ProfileData = await profileModel.findOne({ userID: message.author.id })
+        ProfileData = await profileModel.findOne({UserID: message.author.id})
         if (!ProfileData) {
             let Item = await profileModel.create({
                 name: { type: String, required: true },
@@ -102,20 +102,10 @@ module.exports = async (Discord, client, message) => {
         user = await profileModel.findOne(userQuery);
     };
 
-    const afks = new Map();
+    const params = {message, args, client, Discord, ProfileData, profileModel, user, userQuery, master};
 
-    if (afks.has(`<@${message.author.id}>`)) {
-        message.reply('Welcome back! I have removed your afk.');
-        afks.delete(`<@${message.author.id}>`);
-    }
-    if (!message.mentions.users.size) { }
-    else {
-        if (afks.has(`<@${message.mentions.users.first().id}>`)) {
-            message.reply(`That person is afk, they have left this message for you: ${afks.get(`<@${message.mentions.users.first().id}>`)}`);
-        }
-    }
     async function commandExecute() {
-        if (command) command.execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afks);
+        if (command) command.execute(params);
     }
 
     if (command) {

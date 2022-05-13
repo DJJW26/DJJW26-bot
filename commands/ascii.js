@@ -5,7 +5,7 @@ module.exports = {
     name: "Ascii",
     aliases: [],
     description: "Ascii Art!",
-    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afks) {
+    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
         console.log('hm');
         let Content = args.shift.join(" ");
         if (!Content) return message.channel.send(`Please Give Me Text!`);

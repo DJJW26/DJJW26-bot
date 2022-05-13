@@ -10,7 +10,7 @@ module.exports = {
     aliases: ['amogus'],
     description: 'Start a game of amogus, right in discord!',
     cooldown: 10,
-    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afksmessage) {
+    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
         /*if (!message.member.permissions.has('MANAGE_GUILD') || message.author.id == 869768645067292693) {
             return message.reply(
                 'You need the `MANAGE_GUILD` permission to run this command.'

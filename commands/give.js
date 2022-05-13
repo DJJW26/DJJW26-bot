@@ -4,7 +4,7 @@ module.exports = {
     name: 'give',
     aliases: 'share',
     description: 'give some coins to a player',
-    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afks) {
+    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
         let target;
         if (!message.mentions.users.size) {
             if (!args[0]) return message.reply('No user provided.')
