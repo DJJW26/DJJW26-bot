@@ -9,6 +9,7 @@ const wordleList = require('../wordle.json');
 module.exports = {
     name: 'wordle',
     async execute(message, args, client, Discord) {
+        console.log(message);
         if (gameSet.has(message.author.id)) {
             return message.reply(
                 "You already have an active game... If you don't know where it is, wait for 5 minutes and try again!"

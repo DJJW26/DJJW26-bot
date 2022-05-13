@@ -2,6 +2,8 @@ require('dotenv').config();
 const cooldown = require('../../models/cooldownSchema.js')
 const Discord = require('discord.js');
 const Inventory = require('../../models/inventory');
+const afkModel = require('../../models/afkModel');
+const { db } = require('../../models/cooldownSchema.js');
 
 module.exports = async (Discord, client, message) => {
     const prefix = process.env.PREFIX;
@@ -10,7 +12,7 @@ module.exports = async (Discord, client, message) => {
     let ProfileData;
     const profileModel = require(`../../models/profileSchema`)
     try {
-        ProfileData = await profileModel.findOne({UserID: message.author.id})
+        ProfileData = await profileModel.findOne({ UserID: message.author.id })
         if (!ProfileData) {
             let Item = await profileModel.create({
                 name: { type: String, required: true },
@@ -31,7 +33,7 @@ module.exports = async (Discord, client, message) => {
             new Inventory({
                 User: message.author.id,
                 Inventory: {},
-              }).save();
+            }).save();
         }
     } catch (err) {
         console.log(err)
@@ -102,7 +104,59 @@ module.exports = async (Discord, client, message) => {
         user = await profileModel.findOne(userQuery);
     };
 
-    const params = {message, args, client, Discord, ProfileData, profileModel, user, userQuery, master};
+    client.afkInfo = {
+        afks: [],
+    }
+
+    if (message.guild) {
+        if (client.afkInfo.afks.includes(message.author.id)) {
+            client.afkInfo.afks = client.afkInfo.afks.filter(
+                (u) => u !== message.author.id
+            )
+            message.member.setNickName(
+                message.member.displayName.replace(/~ AFK/g, '')
+            )
+            message.channel
+                .send(
+                    `Welcome back ${message.member}! I have remove your AFK.    `
+                )
+                .then((msg) => {
+                    setTimeout(() => {
+                        msg.delete()
+                    }, 2500)
+                })
+            const u = await afkModel.findOne({ User: message.author.id })
+            u.afk = {
+                afk: false,
+                reason: '',
+                time: null,
+            }
+            u.save()
+        }
+        else {
+            if (message.mentions.users.size < 1) {
+
+            } else {
+                let mention = message.mentions.users.first().id;
+                let user1 = await afkModel.findOne({ User: mention })
+                if (user1) {
+                    if (user1.afk.afk) {
+                        message.channel.send(
+                            `${message.mentions.users.first().username} is currently afk: ${user1.afk.reason
+                            } - <t:${(user1.afk.time / 1000).toFixed(0)}:R>`,
+                            {
+                                allowedMentions: {
+                                    users: [],
+                                },
+                            }
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    const params = { message, args, client, Discord, ProfileData, profileModel, user, userQuery, master };
 
     async function commandExecute() {
         if (command) command.execute(params);
