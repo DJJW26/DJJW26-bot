@@ -156,10 +156,8 @@ module.exports = async (Discord, client, message) => {
         }
     }
 
-    const params = { message, args, client, Discord, ProfileData, profileModel, user, userQuery, master };
-
     async function commandExecute() {
-        if (command) command.execute(params);
+        if (command) command.execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master);
     }
 
     if (command) {
