@@ -38,7 +38,8 @@ module.exports = {
         }
         else {
 
-            const reason = args.join(' ') || 'AFK'
+            let reason = args.join(' ') 
+            if(!reason) reason = 'AFK'
 
             user.afk = {
                 afk: true,

@@ -104,6 +104,7 @@ module.exports = async (Discord, client, message) => {
         user = await profileModel.findOne(userQuery);
     };
 
+    client.afkInfo = new Discord.Collection()
     client.afkInfo = {
         afks: [],
     }
