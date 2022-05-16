@@ -24,6 +24,7 @@ module.exports = {
             message.react('☑️')
         }
 
+        let reason = 'AFK'
         let user = await db.findOne({ userId: message.author.id })
         if (!user) {
             const newUser = new db({
@@ -35,11 +36,9 @@ module.exports = {
             })
             newUser.save()
             user = newUser
-        }
-        else {
-
-            let reason = args.join(' ') 
-            if(!reason) reason = 'AFK'
+        } else {
+            reason = args.join(' ')
+            if (!reason) reason = 'AFK'
 
             user.afk = {
                 afk: true,
