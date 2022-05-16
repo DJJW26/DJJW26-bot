@@ -36,16 +36,17 @@ module.exports = {
             newUser.save()
             user = newUser
         }
+        else {
 
-        const reason = args.join(' ') || 'AFK'
+            const reason = args.join(' ') || 'AFK'
 
-        user.afk = {
-            afk: true,
-            reason: reason,
-            time: new Date()
+            user.afk = {
+                afk: true,
+                reason: reason,
+                time: new Date()
+            }
+            user.save()
         }
-        user.save()
-
         message.channel.send(`${message.member}, I have set your afk:- \n ${reason}`)
         try {
             message.member.setNickname(`${message.member.displayName} ~ AFK`)
