@@ -2,7 +2,7 @@ const db = require('../models/afkModel')
 
 module.exports = {
     name: 'afk',
-    async execute(message, args, client) {
+    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afkInfo) {
         const admin = message.member.permissions.has('ADMINISTRATOR')
         if (['clear', 'remove'].includes(args[0]) && admin) {
             args.shift()
@@ -25,8 +25,8 @@ module.exports = {
         }
 
         let reason = 'AFK'
-        let user = await db.findOne({ userId: message.author.id })
-        if (!user) {
+        let user2 = await db.findOne({ userId: message.author.id })
+        if (!user2) {
             const newUser = new db({
                 User: message.author.id,
                 afk: {
@@ -35,27 +35,26 @@ module.exports = {
                 },
             })
             newUser.save()
-            user = newUser
+            user2 = newUser
         } else {
             reason = args.join(' ')
             if (!reason) reason = 'AFK'
 
-            user.afk = {
+            user2.afk = {
                 afk: true,
                 reason: reason,
                 time: new Date()
             }
-            user.save()
+            user2.save()
         }
         message.channel.send(`${message.member}, I have set your afk:- \n ${reason}`)
         try {
             message.member.setNickname(`${message.member.displayName} ~ AFK`)
         } catch (err) {
-            console.log(err)
+            console.error(err)
         }
-        setTimeout(() => {
-            client.afkInfo.afks.push(message.author.id)
-        }, 5000)
+        afkInfo.push(message.author.id)
+        console.log(afkInfo)
         return
     }
 }

@@ -15,6 +15,11 @@ client.events = new Discord.Collection();
     require(`./handlers/${handler}`)(client, Discord)
 });
 
+client.snipes  = {
+    snipes: new Discord.Collection(),
+    esnipes: new Discord.Collection(),
+}
+
 mongoose.connect(process.env.MONGODB_SRV, {
     useNewURLParser: true,
     useUnifiedTopology: true,

@@ -104,14 +104,11 @@ module.exports = async (Discord, client, message) => {
         user = await profileModel.findOne(userQuery);
     };
 
-    client.afkInfo = new Discord.Collection()
-    client.afkInfo = {
-        afks: [],
-    }
+    afkInfo = ["amogus"];
 
     if (message.guild) {
-        if (client.afkInfo.afks.includes(message.author.id)) {
-            client.afkInfo.afks = client.afkInfo.afks.filter(
+        if (afkInfo.includes(message.author.id)) {
+            afkInfo = afkInfo.filter(
                 (u) => u !== message.author.id
             )
             message.member.setNickName(
@@ -134,31 +131,29 @@ module.exports = async (Discord, client, message) => {
             }
             u.save()
         }
-        else {
-            if (message.mentions.users.size < 1) {
-
-            } else {
-                let mention = message.mentions.users.first().id;
-                let user1 = await afkModel.findOne({ User: mention })
-                if (user1) {
-                    if (user1.afk.afk) {
-                        message.channel.send(
-                            `${message.mentions.users.first().username} is currently afk: ${user1.afk.reason
-                            } - <t:${(user1.afk.time / 1000).toFixed(0)}:R>`,
-                            {
-                                allowedMentions: {
-                                    users: [],
-                                },
-                            }
-                        )
-                    }
+        if (message.mentions.users.size < 1) {
+        } else {
+            let mention = message.mentions.users.first().id;
+            let user1 = await afkModel.findOne({ User: mention })
+            if (user1) {
+                if (user1.afk.afk) {
+                    message.channel.send(
+                        `${message.mentions.users.first().username} is currently afk: ${user1.afk.reason
+                        } - <t:${(user1.afk.time / 1000).toFixed(0)}:R>`,
+                        {
+                            allowedMentions: {
+                                users: [],
+                            },
+                        }
+                    )
                 }
             }
         }
+
     }
 
     async function commandExecute() {
-        if (command) command.execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master);
+        if (command) command.execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afkInfo);
     }
 
     if (command) {
