@@ -1,4 +1,4 @@
-module.exports = async (Discord, client, newContent, oldContent) => {
+module.exports = async (oldMessage, newMessage, Discord, client) => {
     if (newMessage.author.bot) return
         let snipes = client.snipes.esnipes.get(oldMessage.channel.id) || []
 
