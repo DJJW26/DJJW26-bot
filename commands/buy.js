@@ -11,8 +11,11 @@ module.exports = {
     const validItem = !!items.find((val) => val.item === itemToBuy);
     if (!validItem) return message.reply('The item that you wanted to buy is not even an item');
 
-    const itemPrice = items.find((val) => val.item.toLowerCase() === itemToBuy)
+    const itemPrice = items.find((val) => val.item === itemToBuy)
       .price;
+
+
+      if(typeof itemPrice == String) return message.reply('You cant buy that item?');
 
     try {
       ProfileData = await profileModel.findOne({ userID: message.author.id })
@@ -89,6 +92,12 @@ module.exports = {
                 },
               }
             );
+            message.reply({
+              embeds: [new MessageEmbed()
+                .setColor('GREEN')
+                .setDescription(`You have bought ${itemToBuy} and paid ${itemPrice}`)
+                .setTitle(`Successfull ${itemToBuy} purchase`)]
+            })
           } else {
             new Inventory({
               User: message.author.id,
