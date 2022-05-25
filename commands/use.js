@@ -15,7 +15,7 @@ module.exports = {
         const params = {
             User: message.author.id,
         }
-        await Inventory.findOne(params, async (err, data) =>{
+        const profileData = await Inventory.findOne(params, async (err, data) =>{
             if(!data) return message.reply('You dont have that item?')
             const hasItem = Object.keys(data.Inventory).includes(itemToUse);
             if(!hasItem) return message.reply('You dont have that item?');
@@ -25,6 +25,6 @@ module.exports = {
             .usable;
         if(!usableItem) return message.reply('You cant use that item?')
 
-        const use = !!item.find((val) => val.item === itemToUse).use(message, args, client, Discord);
+        const use = !!item.find((val) => val.item === itemToUse).use(message, args, client, Discord, profileData);
     }
 }

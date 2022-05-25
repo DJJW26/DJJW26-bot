@@ -12,7 +12,7 @@ module.exports = [
         price: 'Cannot be bought',
         description: 'Small chance of getting this box from the daily command.',
         usable: true,
-        async use(message, args, client, Discord) {
+        async use(message, args, client, Discord, profileData) {
             let max = 500000
             let min = 5000
             const randCoins = Math.floor(Math.random() * (max - min + 1) + min)
@@ -87,7 +87,7 @@ module.exports = [
         price: 'Cannot be bought',
         description: 'A ping.',
         usable: true,
-        async use(message, args, client, Discord) {
+        async use(message, args, client, Discord, profileData) {
             const pingItemToRemove = 'Ping';
 
             const params = {
@@ -107,7 +107,7 @@ module.exports = [
         price: 6000,
         description: 'A jug.',
         usable: true,
-        async use(message, args, client, Discord) {
+        async use(message, args, client, Discord, profileData) {
             randIntJug = Math.floor(Math.random() * (10 - 1 + 1) + 1);
 
             if (randIntJug == 7) {
@@ -139,7 +139,7 @@ module.exports = [
         price: 'Cannot be bought',
         description: 'Just a biscuit.',
         usable: true,
-        async use(message, args, client, Discord) {
+        async use(message, args, client, Discord, profileData) {
             const biscuitItemToRemove = 'Biscuit'
 
             const params = {
