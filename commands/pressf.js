@@ -20,11 +20,12 @@ module.exports = {
             })
 
             collector.on('end', collected => {
+                respecters.shift();
                 if (!respecters.length) {
                     message.channel.send(`No one paid their respects to ${args.join(' ')}`);
                 }
                 for (var i = 0; i < respecters.length; i++) {
-                    message.channel.send(`\`${respecters[i]}\` has paid respects to ${args.join(' ')}`);
+                    message.channel.send(`\`${respecters[i]}\` has paid respects to \`${args.join(' ')}\``);
                 }
             })
         });

@@ -6,7 +6,7 @@ module.exports = {
   description: 'Lets the user check their inventory',
   aliases: ['inventory'],
   async execute(message, args, client, Discord) {
-    Inventory.findOne({ User: message.author.id }, async (err, data) => {
+    await Inventory.findOne({ User: message.author.id }, async (err, data) => {
       if (!data) return message.reply('Nothing to see here')
       const mappedData = Object.keys(data.Inventory).map((key) => {
         return `${key} ─ ${data.Inventory[key]}`
