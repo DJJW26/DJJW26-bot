@@ -1,24 +1,26 @@
+const clean = async (text) => {
+    if (text && text.constructor.name == "Promise")
+        text = await text;
+    if (typeof text !== "string")
+        text = require("util").inspect(text, { depth: 1 });
+    text = text
+        .replace(/`/g, "`" + String.fromCharCode(8203))
+        .replace(/@/g, "@" + String.fromCharCode(8203));
+    return text;
+}
 const { inspect } = require('util');
 
 module.exports = {
     name: 'eval',
-    async execute(message,args) {
+    async execute(message, args) {
         if (message.author.id != 869768645067292693) return
 
-        const code = args.join(' ');
-        if(!code) return message.reply('Give some code')
-
         try {
-            const result = await eval(code);
-            let output = result
-            if( typeof result !== 'string' ){
-                output = inspect(result)
-            }
-
-            message.channel.send(output, {code: 'js'})
-        } catch (error) {
-            console.error(error)
-            message.reply('Error')
+            const evaled = eval(args.join(" "));
+            const cleaned = await clean(evaled);
+            message.channel.send(`\`\`\`js\n${cleaned}\n\`\`\``);
+        } catch (err) {
+            message.channel.send(`\`ERROR\` \`\`\`xl\n${cleaned}\n\`\`\``);
         }
     }
 }

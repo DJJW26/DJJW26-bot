@@ -12,12 +12,12 @@ module.exports = {
         if (args[0] == 'list') {
             await remindDb.findOne({ User: message.author.id }, async (err, data) => {
                 if (!data) return await message.reply('You have no reminders');
-                const mappedData = await Object.keys(data.remindDb).map((key) => {
-                    return `${key} ─ ${data.remindDb[key]}`
+                const mappedData = await Object.keys(data.Reminders).map((key) => {
+                    return `Time: ${key}, Reminder: \`${data.Reminders[key]}\``
                 }).join(' \n');
 
                 message.channel.send({
-                    embeds: [new MessageEmbed()
+                    embeds: [new Discord.MessageEmbed()
                         .setColor('GREEN')
                         .setTitle(`${message.author.username}'s reminders`)
                         .setDescription(`${mappedData}`)]
@@ -40,8 +40,8 @@ module.exports = {
 
         await remindDb.findOne({ User: message.author.id }, async (err, data) => {
             if (data) {
-                data.remindDb[time] = `${reminder}`
-                await remindDb.findOneAndUpdate(params, data);
+                data.Reminders[time] = `${reminder}`
+                await remindDb.findOneAndUpdate({ User: message.author.id }, data);
             } else {
                 new remindDb({
                     User: message.author.id,
@@ -54,6 +54,12 @@ module.exports = {
 
         setTimeout(() => {
             message.author.send(`You asked me to remind you about \`${reminder}\`, ${time} ago.`)
+            remindDb.findOne({ User: message.author.id }, async (err, data) => {
+                if (data) {
+                    delete data.Reminders[time];
+                    remindDb.findOneAndUpdate({ User: message.author.id }, data);
+                }
+            }).clone().catch(async (err) => { console.log(err) });
         }, milli);
 
         message.channel.send(`Alright <@${message.author.id}>, i'll remind you about \`${reminder}\`, in ${time}`);
