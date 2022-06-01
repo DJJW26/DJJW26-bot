@@ -48,6 +48,18 @@ module.exports = {
                     description: "Custom economy commands",
                     emoji: '💰',
                 },
+                {
+                    label: 'Moderation',
+                    value: 'select-moderation',
+                    description: 'Moderation commands',
+                    emoji: '🔨',
+                },
+                {
+                    label: 'Music',
+                    value: 'select-music',
+                    description: 'Music commands',
+                    emoji: '🎵',
+                }
             ])
             .setMaxValues(1)
             .setMinValues(1)
