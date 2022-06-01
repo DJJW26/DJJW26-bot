@@ -2,9 +2,9 @@ const Discord = require('discord.js')
 
 module.exports = {
     name: "embed",
-    description: "make embed",
+    description: "Make an embed",
     cooldowns: 5,
-
+    category: 'fun',
     async execute(message, args,client, Discord){
         if(!message.member.permissions.has('MANNAGE_MESSAGES')) return 
         let title = args[0]

@@ -2,7 +2,7 @@ module.exports = {
     name : 'emojify',
     description : 'Make any sentence out of emoji\'s',
     cooldowns: 5,
-
+    category: 'fun',
     execute: async(message, args) => {
         let sentence = '';
 

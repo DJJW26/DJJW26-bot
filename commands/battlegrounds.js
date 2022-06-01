@@ -9,6 +9,8 @@ const { before } = require('lodash')
 const { description } = require('./among-us')
 module.exports = {
     name: 'battlegrounds',
+    description: 'Battlegrounds',
+    category: 'fun',
     aliases: ['pubg', 'fortnite', 'bg', 'arena'],
     async execute(message, client) {
         if (!message.member.permissions.has('ADMINISTRATOR')) {

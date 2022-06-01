@@ -5,6 +5,7 @@ module.exports = {
     name: "Ascii",
     aliases: [],
     description: "Ascii Art!",
+    category: "fun",
     async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
         console.log('hm');
         let Content = args.shift.join(" ");

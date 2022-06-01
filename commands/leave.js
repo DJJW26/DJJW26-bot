@@ -2,6 +2,7 @@ module.exports = {
     name: 'leave',
     description: 'stop the bot and leave the channel',
     cooldowns: 1,
+    category: 'music',
     async execute(message) {
         const voiceChannel = message.member.voice.channel;
  

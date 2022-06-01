@@ -6,6 +6,7 @@ module.exports = {
     name: 'fortune-cookie',
     aliases: ['fortuneCookie', 'fortune', 'cookie'],
     description: 'open a fortune cookie',
+    category: 'fun',
     async execute(message) {
         const profileModel = require(`./../models/profileSchema`)
         try {

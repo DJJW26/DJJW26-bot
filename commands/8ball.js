@@ -1,6 +1,7 @@
 module.exports = {
     name: '8ball',
-    description: 'you know what it does',
+    category: 'fun',
+    description: 'You know what it does.',
     execute(message, args) {
         const responses = [
             "It is certain.", "It is decidedly so.", "Without a doubt.", "Yes - definitely.", "You may rely on it.", "As I see it, yes.",

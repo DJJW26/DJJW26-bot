@@ -3,6 +3,8 @@ const request = require("request");
 module.exports = {
     name: 'interesting',
     aliases: 'interest',
+    description: 'shows a random interesting fact',
+    category: 'fun',
     execute(message,args,client, Discord) {
         let urls = ["https://meme-api.herokuapp.com/gimme/mildlyinteresting", "https://meme-api.herokuapp.com/gimme/interestingasfuck", "https://meme-api.herokuapp.com/gimme/damnthatsinteresting"];
 

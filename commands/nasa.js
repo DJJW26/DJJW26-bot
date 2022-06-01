@@ -2,6 +2,8 @@ const fetch = require("node-fetch");
 
 module.exports = {
     name: 'nasa',
+    description: 'Gets a random info from NASA',
+    category: 'fun',
     async execute(message, args, client, Discord) {
         if (!args) {
             return message.channel.send("Enter a valid term to search for!");

@@ -5,6 +5,7 @@ module.exports = {
   name: "tts",
   description: "talks for a user in vc",
   cooldown: 5,
+  category: "utility",
   async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
     const speech = args.shift();
 

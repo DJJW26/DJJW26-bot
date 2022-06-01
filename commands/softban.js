@@ -2,6 +2,7 @@ module.exports = {
     name: 'softban',
     description: 'softbans a member',
     cooldowns: 5,
+    category: 'moderation',
     execute(message){
         const member = message.mentions.users.first();
         const userID = message.guild.members.cache.get(member.id);

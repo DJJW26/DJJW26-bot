@@ -1,6 +1,8 @@
 const fetch = require("node-fetch");
 module.exports = {
     name: 'gif',
+    description: 'Gets a gif from tenor',
+    category: 'fun',
     execute(message, args) {
         var query = args.join(' ');
         fetch(`https://api.tenor.com/v1/random?q=${query}&key=` + process.env.TENOR)

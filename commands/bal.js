@@ -5,7 +5,8 @@ module.exports = {
     aliases: ['balance', 'cash', 'money', 'coins'],
     permissions: [],
     cooldown: 3,
-    description: 'check users balance',
+    description: 'Lets you check your balance',
+    category: 'economy',
     async execute(message, args, client, Discord, ProfileData, user, userQuery, master) {
         const profileModel = require(`./../models/profileSchema`)
         let userBal = null;

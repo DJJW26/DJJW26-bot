@@ -4,6 +4,7 @@ module.exports = {
     aliases: ["withdraw"],
     permissions: [],
     description: "Withdraw coins from your bank!",
+    category: "economy",
     async execute(message, args, ProfileData) {
         let amount = args[0]
         let resultBank

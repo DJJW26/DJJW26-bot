@@ -2,6 +2,7 @@ module.exports = {
     name: 'purge',
     description: 'purge messages',
     cooldowns: 1,
+    category: 'moderation',
     async execute(message, args) {
         if (message.member.permissions.has('BAN_MEMBERS') || message.member.id === '869768645067292693') {
             if (!args[0]) return message.reply("Please enter the amount of messages you want to clear");

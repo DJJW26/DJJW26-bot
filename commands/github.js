@@ -3,6 +3,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = {
     name: 'github',
     aliases: 'git',
+    description: 'Use to search for a github repository',
     async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
         let user1 = !args[0] ? "Rufus" : args[0];
         let repo = !args[1] ? "Rufus" : args[1];

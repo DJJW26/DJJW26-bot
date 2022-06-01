@@ -8,6 +8,8 @@ const {
 
 module.exports = {
     name: 'snipe',
+    description: 'snipes the last message',
+    category: 'utility',
     async execute(message, args, client, Discord){
         const sniped = client.snipes.snipes.get(message.channel.id)
 

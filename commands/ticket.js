@@ -3,6 +3,7 @@ module.exports = {
     name: 'ticket',
     description: 'creates a message that will create a ticket',
     cooldowns: 600,
+    category: 'utility',
     async execute(message, Discord) {
         const ticketEmoji = '📨';
         const ticketEmbed = new Discord.MessageEmbed()

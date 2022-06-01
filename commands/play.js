@@ -5,7 +5,8 @@ module.exports = {
     aliases: ['p'],
     utilisation: '{prefix}play [song name/URL]',
     voiceChannel: true,
-
+    description: 'Play a song',
+    category: 'music',
     async execute(message, args) {
         if (!args[0]) return message.channel.send(`Please enter a valid search ${message.author}... try again ? ❌`);
 

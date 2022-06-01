@@ -9,6 +9,7 @@ const {
 module.exports = {
     name: 'e-snipe',
     aliases: ['esnipe', 'editSnipe'],
+    category: 'utility',
     async execute(message, args, client){
         const sniped = client.snipes.esnipes.get(message.channel.id)
 

@@ -6,6 +6,7 @@ module.exports = {
     description: 'rolls a dice',
     aliases: ['roll'],
     cooldowns: 2,
+    category: 'utility',
     execute(message, args) {
         if (args.length > 0) {
             const errorEmbed = new MessageEmbed()

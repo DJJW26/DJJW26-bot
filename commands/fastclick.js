@@ -5,9 +5,7 @@ module.exports = {
     usage: '<USER>',
     description: 'Use your skills to win fights, the fastest to click wins!',
     cooldown: 5,
-    /**
-     * @param {Message} message
-     */
+    category: 'fun',
     async execute(message, args) {
         const user1 = message.member
         const user2 =

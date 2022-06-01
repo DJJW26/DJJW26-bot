@@ -4,6 +4,7 @@ module.exports = {
     name: 'urban',
     aliases: ['ub'],
     description: 'Searches on the Urban dictionary',
+    category: 'fun',
     async execute(message, args, Discord) {
         if (!args.length) return message.channel.send('You forgot to define your search term');
 

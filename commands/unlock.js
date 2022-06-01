@@ -3,6 +3,7 @@ module.exports = {
     name: 'unlock',
     description: 'unlocks a specific channel',
     cooldowns: 1,
+    category: 'moderation',
     execute (message){
         if(message.member.permissions.has('BAN_MEMBERS') || message.member.id === '869768645067292693')
         {

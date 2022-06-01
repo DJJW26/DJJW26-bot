@@ -4,6 +4,7 @@ module.exports = {
     name: 'slowmode',
     description: 'changes the slowmode',
     aliases: ['sm', 'slow'],
+    category: 'moderation',
     execute(message, args) {
         if (message.member.permissions.has('BAN_MEMBERS') || message.member.id === '869768645067292693') {
             if (args[0] < 21600) {

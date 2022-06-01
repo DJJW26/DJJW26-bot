@@ -2,8 +2,9 @@ module.exports = {
     name: 'stickyCaps',
     description: 'changes normal sentence to sticky caps',
     aliases: ['sc'],
+    cooldowns: 2,
+    category: 'fun',
     async execute(message, args) {
-        //a e i l o u 
         let prefix = '%';
         let hm = null;
         if(message.content.includes("%sc ")){

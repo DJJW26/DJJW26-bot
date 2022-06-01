@@ -1,6 +1,7 @@
 module.exports = {
     name: 'choose',
-    description: 'chooses between args',
+    description: 'Chooses between args',
+    category: 'utility',
     execute(message) {
         const prefix = process.env.PREFIX;
         if (message.content.includes(',')) {

@@ -3,6 +3,8 @@ const Discord = require('discord.js');
 const profileModel = require("../models/profileSchema");
 module.exports = {
     name: 'daily',
+    desciption: 'Gives you your daily reward',
+    category: 'economy',
     cooldown: 86400,
     async execute(message, args) {
         let embed = new Discord.MessageEmbed()

@@ -12,6 +12,7 @@ module.exports = {
     name: 'time',
     description: 'Get relative time.',
     usage: `<time>`,
+    category: 'utility',
     async execute(message, args, client) {
         const formatTime = (time, format) => {
             return `<t:${(time / 1000).toFixed(0)}:${format || 'R'}>`

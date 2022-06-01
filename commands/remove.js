@@ -4,6 +4,7 @@ module.exports = {
   aliases: [],
   permissions: ["ADMINISTRATOR"],
   description: "removes some coins from a player",
+  category: "economy",
   async execute(message, args, master) {
     if (message.author.id != 869768645067292693) return message.channel.send(`Only **DJJW26** can run this command`);
     if (!args.length) return message.channel.send("You need to mention a player");

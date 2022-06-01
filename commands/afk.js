@@ -2,6 +2,8 @@ const db = require('../models/afkModel')
 
 module.exports = {
     name: 'afk',
+    description: 'Lets a user set their AFK status',
+    category: 'utility',
     async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afkInfo) {
         const admin = message.member.permissions.has('ADMINISTRATOR')
         if (['clear', 'remove'].includes(args[0]) && admin) {

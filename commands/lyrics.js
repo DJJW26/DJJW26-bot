@@ -5,6 +5,7 @@ module.exports = {
     name: 'lyrics',
     description: 'Searches song lyrics from Google',
     cooldowns: 1,
+    category: 'music',
     async execute(message, args, Discord) {
         if (!args) return message.channel.send('No song specified'); 
 

@@ -3,6 +3,8 @@ const {createWorker} = require('tesseract.js');
 module.exports = {
     name: 'ocr',
     aliases: ['image-to-text', 'itt'],
+    description: 'OCR a image',
+    category: 'utility',
     async execute(message, args, client, Discord){
         const img = message.attachments.first();
         if(!img) return message.reply('Please provide an image.')

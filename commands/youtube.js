@@ -5,6 +5,8 @@ module.exports = {
     name: 'youtube',
     aliases: ['yt', 'yt-search'],
     cooldown: 5,
+    description: 'Searches youtube for a video',
+    category: 'utility',
     async execute(message, args) {
         if (!args.length) return message.reply('Provide video name')
         const embed = new MessageEmbed()

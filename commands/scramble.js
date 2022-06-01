@@ -1,6 +1,8 @@
 module.exports = {
     name: 'scramble',
     description: 'Attempt to unscramble the given scrambled word',
+    cooldowns: 1,
+    category: 'fun',
     execute: async (message) => {
         let words = ['childhood', 'imagination', 'renaissance', 'ambulance', 'fluorescent', 'philosophical', 'vernacular', 'international', 'embarrassment', 'problematic'];
         let word = words[parseInt(Math.random() * words.length)];

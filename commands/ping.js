@@ -3,6 +3,7 @@ module.exports = {
   description: "Ping the bot",
   aliases: 'latency',
   cooddowns: 1,
+  category: 'utility',
   execute(message,args, client, Discord) {
     return message.channel.send("Pinging...").then((sent) => {
       const embed = new Discord.MessageEmbed()

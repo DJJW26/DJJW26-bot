@@ -1,5 +1,7 @@
 module.exports = {
     name: 'pressf',
+    description: 'Press F to pay respects',
+    category: 'fun',
     execute(message, args) {
 
         if (!args.length) return message.reply('What do you want to pay respect to?');

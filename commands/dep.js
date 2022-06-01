@@ -2,8 +2,8 @@ const profileModel = require("../models/profileSchema");
 module.exports = {
     name: "dep",
     aliases: ["deposit"],
-    permissions: [],
     description: "Deposit coins into your bank!",
+    category: "economy",
     async execute(message, args, ProfileData) {
         let amount = args[0]
         let resultBank

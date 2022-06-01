@@ -4,6 +4,8 @@ const items = require('../shopItems.js')
 const fs = require('fs');
 module.exports = {
   name: "shop",
+  description: "The item shop",
+  category: "economy",
   async execute(message, args, client) {
     if(items.length === 0) return message.reply('There is no item for sale.')
 

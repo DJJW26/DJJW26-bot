@@ -3,6 +3,7 @@ const decancer = require('decancer');
 module.exports = {
     name: 'decancer',
     description: 'Used to remove special characters from a nick',
+    category: 'moderation',
     async execute(message, args, client) {
         const hasPerms = message.member.permissions.has('MANAGE_NICKNAMES');
 

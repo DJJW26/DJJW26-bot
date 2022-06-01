@@ -3,6 +3,8 @@ const { Util } = require("discord.js");
 module.exports = {
     name: 'emoji-steal',
     aliases: ['emojiSteal','emoji'],
+    description: 'Steals an emoji from a server',
+    category: 'utility',
     execute(message, args){
         if(!args.length){
             return message.reply('please specify the emoji')

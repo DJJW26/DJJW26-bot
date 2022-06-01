@@ -8,6 +8,8 @@ const gameSet = new Collection();
 const wordleList = require('../wordle.json');
 module.exports = {
     name: 'wordle',
+    description: 'wordle in discord',
+    category: 'fun',
     async execute(message, args, client, Discord) {
         if (gameSet.has(message.author.id)) {
             return message.reply(

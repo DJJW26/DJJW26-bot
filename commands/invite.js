@@ -2,8 +2,9 @@ const {MessageEmbed} = require('discord.js');
 
 module.exports = {
     name: 'invite',
-    description: "sends bot invite",
+    description: "Use this to invite the bot to your server",
     cooldowns: 1,
+    category: 'utility',
     execute(message, Discord) {
         const newEmbed = new MessageEmbed()
             .setColor('#2d84d2')

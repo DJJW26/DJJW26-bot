@@ -3,7 +3,8 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
     name: "dm",
     aliases: ['text, message, direct-message'],
-    description: 'why have i even given this',
+    description: 'Why have i even given this',
+    category: 'utility',
     execute(message, args) {
         const errorMessage = 'Please enter a correct input: \n `%dm <user mention>/<user id> <message>` \n Example: `%dm @DJJW26#4190 idk if there is any use to this command except to send msgs to ppl who have blocked me`'
         if (!args.length) return message.reply(errorMessage);

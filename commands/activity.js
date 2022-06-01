@@ -1,11 +1,13 @@
 module.exports = {
     name: 'activity',
+    description: 'Sets the bot\'s activity',
+    category: 'dev',
     execute(message, args, client) {
         let types = 2;
-/*        if (message.author != '869768645067292693' || message.author != '928895679043080192') {
-            return message.reply('you cant use this command');
+        if (message.author.id != 869768645067292693 || message.author.id != 928895679043080192) {
+            return 
         }
-        else {*/
+        else {
             if (args[0] === "playing") {
                 types = 0
             } else if (args[0] === "streaming") {
@@ -25,7 +27,7 @@ module.exports = {
             } else {
                 return message.channel.send('Invalid activity type.')
             }
-//        }
+        }
         args.shift();
         const content = args.join(' ')
         client.user.setPresence({

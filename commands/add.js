@@ -3,7 +3,8 @@ module.exports = {
   name: "add",
   aliases: [],
   permissions: ["ADMINISTRATOR"],
-  description: "give a player some coins",
+  description: "Give a player some coins",
+  category: "economy",
   async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
     if (message.author.id === 869768645067292693) return message.channel.send(`Only **DJJW26** can run this command`);
     if (!args.length) return message.channel.send("You need to mention a player to give them coins");

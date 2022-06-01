@@ -2,6 +2,7 @@ module.exports = {
     name: 'kick',
     description: 'kicks a member',
     cooldowns: 1,
+    category: 'moderation',
     execute(message){
         const member = message.mentions.users.first();
         if(!member) return message.reply('Mention a user.');

@@ -8,8 +8,8 @@ const {randomBytes} = require('crypto');
 module.exports = {
     name: 'calculator',
     aliases: ['calc'],
-    category: 'Utility',
-    description: 'A :sparkles:Fancy:sparkles: calculator within discord.',
+    category: 'utility',
+    description: 'A *Fancy* calculator within discord.',
     /**
      * @param {Message} message
      * @param {String[]} args

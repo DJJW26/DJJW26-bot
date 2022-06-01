@@ -1,6 +1,7 @@
 module.exports = {
     name: 'fight',
     description: 'Fight someone in the old dank memer style!',
+    category: 'fun',
     async execute(message) {
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;

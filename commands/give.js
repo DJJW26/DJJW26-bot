@@ -4,6 +4,7 @@ module.exports = {
     name: 'give',
     aliases: 'share',
     description: 'give some coins to a player',
+    category: 'economy',
     async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
         let target;
         if (!message.mentions.users.size) {

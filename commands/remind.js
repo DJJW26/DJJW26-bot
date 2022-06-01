@@ -5,6 +5,7 @@ module.exports = {
     name: 'remind',
     aliases: ['reminder', 'remindme', 'rm'],
     description: 'set a reminder for yourself',
+    category: 'utility',
     async execute(message, args, client, Discord) {
 
         if (!args.length) return message.reply('Please provide valid arguements. Example: \`%rm 5m gotta clean the oven\`')

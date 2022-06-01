@@ -4,6 +4,7 @@ const Inventory = require('../models/inventory');
 module.exports = {
     name: 'use',
     description: 'used to use an item',
+    category: 'economy',
     async execute(message, args, client, Discord) {
         const itemToUse = args[0];
 

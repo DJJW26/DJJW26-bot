@@ -3,6 +3,7 @@ module.exports = {
     name: 'mute',
     description: "This mutes a member",
     cooldowns: 1,
+    category: 'moderation',
     execute(message, args) {
         if (message.member.permissions.has('BAN_MEMBERS') || message.member.id === '869768645067292693') {
             const target = message.mentions.users.first();

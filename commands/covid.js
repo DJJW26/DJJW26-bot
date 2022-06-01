@@ -4,6 +4,7 @@ const jaro = require('jaro-winkler');
 module.exports = {
     name: 'covid',
     description: 'Get COVID-19 Statistics',
+    category: 'utility',
     async execute(message, args, client, Discord) {
         let res;
         let country;

@@ -12,6 +12,8 @@ const { inspect } = require('util');
 
 module.exports = {
     name: 'eval',
+    description: 'Evaluates code',
+    category: 'dev',
     async execute(message, args) {
         if (message.author.id != 869768645067292693) return
 

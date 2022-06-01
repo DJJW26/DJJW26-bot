@@ -3,6 +3,7 @@ module.exports = {
     name: 'guessthenumber',
     aliases: ['gtn'],
     description: 'Play guess the number',
+    category: 'fun',
     execute: async (message) => {
         let number = Math.ceil(Math.random() * 1000);
         let finished = false;

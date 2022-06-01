@@ -3,7 +3,8 @@ const profileModel = require("../models/profileSchema");
 module.exports = {
     name: "search",
     aliases: ['scout'],
-    description: "Search for some coin!",
+    description: "Search for some coins",
+    category: "economy",
     async execute(message) {
 
         const locations = [

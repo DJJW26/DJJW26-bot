@@ -1,6 +1,8 @@
 module.exports = {
     name: 'qr',
     aliases: ['qrcode', 'qr-code'],
+    description: 'Generate a QR code',
+    category: 'utility',
     async execute(message, args, client, Discord) {
         const neb = args.join(' ');
         function isValidURL(string) {
