@@ -16,7 +16,7 @@ module.exports = {
                     ? message.mentions.members.first()
                     : message.guild.members.cache.get(args[0]) || null
 
-            if (!mention) return message.channel.send('Couldnt find the user');
+            if (!mention || mention == null) return message.channel.send('Couldnt find the user');
 
             const dbUser = db.findOne({ User: mention.id })
             if (!dbUser || dbUser.afk.afk == false) return message.channel.send('User is not afk')

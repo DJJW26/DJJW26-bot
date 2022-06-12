@@ -33,7 +33,7 @@ module.exports = {
                         }
                     }).save();
                 }
-            }).clone().catch(async (err) => { console.log(err) });
+            })
         } else if (args[0] == 'edit') {
             if (!args[1]) {
                 return message.channel.send('Please specify a tag name.');
@@ -56,7 +56,7 @@ module.exports = {
                 } else {
                     message.channel.send('That tag doesnt exist.')
                 }
-            }).clone().catch(async (err) => { console.log(err) });
+            })
         } else if (args[0] == 'delete') {
             if (!args[1]) {
                 return message.channel.send('Please specify a tag name.');
@@ -75,7 +75,7 @@ module.exports = {
                 } else {
                     message.channel.send('That tag doesnt exists.');
                 }
-            }).clone().catch(async (err) => { console.log(err) });
+            })
         } else {
             if (!args[0]) {
                 return message.channel.send('Please specify a tag name.');
@@ -96,9 +96,7 @@ module.exports = {
                 } else {
                     return message.channel.send('That tag does not exist.');
                 }
-            }).clone().catch(async (err) => { console.log(err) });
+            })
         }
     }
 }
-
-

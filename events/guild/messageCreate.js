@@ -6,6 +6,52 @@ const afkModel = require('../../models/afkModel');
 const { db } = require('../../models/cooldownSchema.js');
 
 module.exports = async (Discord, client, message) => {
+    afkInfo = ['amogus']
+
+
+    if (afkInfo.includes(message.author.id)) {
+        afkInfo = afkInfo.filter(
+            (u) => u !== message.author.id
+        )
+        message.member.setNickName(
+            message.member.displayName.replace(/~ AFK/g, '')
+        )
+        message.channel
+            .send(
+                `Welcome back ${message.member}! I have remove your AFK.    `
+            )
+            .then((msg) => {
+                setTimeout(() => {
+                    msg.delete()
+                }, 2500)
+            })
+        const u = await afkModel.findOne({ User: message.author.id })
+        u.afk = {
+            afk: false,
+            reason: '',
+            time: null,
+        }
+        u.save()
+    }
+    if (message.mentions.users.size < 1) {
+    } else {
+        let mention = message.mentions.users.first().id;
+        let user1 = await afkModel.findOne({ User: mention })
+        if (user1) {
+            if (user1.afk.afk) {
+                message.channel.send(
+                    `${message.mentions.users.first().username} is currently afk: ${user1.afk.reason
+                    } - <t:${(user1.afk.time / 1000).toFixed(0)}:R>`,
+                    {
+                        allowedMentions: {
+                            users: [],
+                        },
+                    }
+                )
+            }
+        }
+    }
+
     const prefix = process.env.PREFIX;
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -103,54 +149,6 @@ module.exports = async (Discord, client, message) => {
         await new_user.save();
         user = await profileModel.findOne(userQuery);
     };
-
-    afkInfo = ["amogus"];
-
-    if (message.guild) {
-        if (afkInfo.includes(message.author.id)) {
-            afkInfo = afkInfo.filter(
-                (u) => u !== message.author.id
-            )
-            message.member.setNickName(
-                message.member.displayName.replace(/~ AFK/g, '')
-            )
-            message.channel
-                .send(
-                    `Welcome back ${message.member}! I have remove your AFK.    `
-                )
-                .then((msg) => {
-                    setTimeout(() => {
-                        msg.delete()
-                    }, 2500)
-                })
-            const u = await afkModel.findOne({ User: message.author.id })
-            u.afk = {
-                afk: false,
-                reason: '',
-                time: null,
-            }
-            u.save()
-        }
-        if (message.mentions.users.size < 1) {
-        } else {
-            let mention = message.mentions.users.first().id;
-            let user1 = await afkModel.findOne({ User: mention })
-            if (user1) {
-                if (user1.afk.afk) {
-                    message.channel.send(
-                        `${message.mentions.users.first().username} is currently afk: ${user1.afk.reason
-                        } - <t:${(user1.afk.time / 1000).toFixed(0)}:R>`,
-                        {
-                            allowedMentions: {
-                                users: [],
-                            },
-                        }
-                    )
-                }
-            }
-        }
-
-    }
 
     async function commandExecute() {
         if (command) command.execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afkInfo);

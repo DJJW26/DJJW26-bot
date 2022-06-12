@@ -9,15 +9,21 @@ const { Client, Intents } = require('discord.js');
 const fs = require('fs');
 
 client.commands = new Discord.Collection();
+client.slashCommands = new Discord.Collection();
 client.events = new Discord.Collection();
 
 ['command_handler', 'event_handler'].forEach(handler => {
     require(`./handlers/${handler}`)(client, Discord)
 });
 
-client.snipes  = {
+client.snipes = {
     snipes: new Discord.Collection(),
     esnipes: new Discord.Collection(),
+}
+
+client.switches = {
+    commands: true,
+    slashCommands: true,
 }
 
 mongoose.connect(process.env.MONGODB_SRV, {
@@ -25,7 +31,7 @@ mongoose.connect(process.env.MONGODB_SRV, {
     useUnifiedTopology: true,
 }).then(() => {
     console.log('Connected to the database!')
-}).catch((err) =>{
+}).catch((err) => {
     console.log(err);
 });
 
