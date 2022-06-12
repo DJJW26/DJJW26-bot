@@ -1,5 +1,4 @@
 module.exports = async (Discord, client, interaction) => {
-    console.log(interaction)
     if (!interaction.isCommand()) return
 
     const { commandName } = interaction
