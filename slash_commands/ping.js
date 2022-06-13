@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const { Interaction } = require('discord.js')
 module.exports = {
-    category: 'Utility',
+    category: 'utility',
     data: new SlashCommandBuilder()
         .setName('ping')
         .setDescription('See if the bot is alive.'),

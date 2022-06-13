@@ -81,6 +81,9 @@ module.exports = {
                 legacy: client.commands.filter(
                     (c) => c.category && c.category === category
                 ),
+                slash: client.slashCommands.filter(
+                    (c) => c.category && c.category === category
+                ),
             }
 
             select.deferUpdate()
@@ -91,6 +94,14 @@ module.exports = {
                     value:
                         commands.legacy
                             .map((c) => `\`${c.name}\` `)
+                            .join(', ') || 'No commands here!',
+                    inline: false,
+                },
+                {
+                    name: 'Slash Commands',
+                    value:
+                        commands.slash
+                            .map((c) => `\`${c.data.name}\` `)
                             .join(', ') || 'No commands here!',
                     inline: false,
                 },
