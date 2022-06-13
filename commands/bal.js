@@ -1,4 +1,5 @@
 const {MessageEmbed} = require('discord.js');
+const profileModel = require(`./../models/profileSchema`)
 
 module.exports = {
     name: 'bal',
@@ -7,13 +8,12 @@ module.exports = {
     cooldown: 3,
     description: 'Lets you check your balance',
     category: 'economy',
-    async execute(message, args, client, Discord, ProfileData, user, userQuery, master) {
-        const profileModel = require(`./../models/profileSchema`)
+    async execute(message, args) {
         let userBal = null;
         let userBal1 = null;
         if (args.length > 0) {
-            if (args[1].startsWith('<@')) {
-                if (args[1].startsWith('<@&')) {
+            if (args[0].startsWith('<@')) {
+                if (args[0].startsWith('<@&')) {
                 }
                 else {
                     userBal = message.mentions.users.first();
@@ -27,14 +27,6 @@ module.exports = {
         try {
             ProfileData = await profileModel.findOne({ userID: userBal })
             if (!ProfileData) {
-                let Item = await profileModel.create({
-                    name: { type: String, required: true },
-                    aliases: { type: Array, default: [] },
-                    description: String,
-                    cost: { type: Number, required: true },
-                });
-
-
                 let profile = await profileModel.create({
                     userID: { type: String, required: true },
                     coins: { type: Number, default: 5000, min: 0 },

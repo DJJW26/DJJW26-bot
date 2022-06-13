@@ -1,13 +1,9 @@
 require('dotenv').config();
 const cooldown = require('../../models/cooldownSchema.js')
-const Discord = require('discord.js');
-const Inventory = require('../../models/inventory');
 const afkModel = require('../../models/afkModel');
-const { db } = require('../../models/cooldownSchema.js');
 
 module.exports = async (Discord, client, message) => {
     afkInfo = ['amogus']
-
 
     if (afkInfo.includes(message.author.id)) {
         afkInfo = afkInfo.filter(
@@ -54,36 +50,6 @@ module.exports = async (Discord, client, message) => {
 
     const prefix = process.env.PREFIX;
     if (!message.content.startsWith(prefix) || message.author.bot) return;
-
-    let ProfileData;
-    const profileModel = require(`../../models/profileSchema`)
-    try {
-        ProfileData = await profileModel.findOne({ UserID: message.author.id })
-        if (!ProfileData) {
-            let Item = await profileModel.create({
-                name: { type: String, required: true },
-                aliases: { type: Array, default: [] },
-                description: String,
-                cost: { type: Number, required: true },
-            });
-
-
-            let profile = await profileModel.create({
-                userID: { type: String, required: true },
-                coins: { type: Number, default: 5000, min: 0 },
-                bank: { type: Number, default: 0, min: 0 },
-                inventory: [Item]
-            })
-            profile.save();
-
-            new Inventory({
-                User: message.author.id,
-                Inventory: {},
-            }).save();
-        }
-    } catch (err) {
-        console.log(err)
-    }
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const cmd = args.shift().toLowerCase();
@@ -140,18 +106,9 @@ module.exports = async (Discord, client, message) => {
             return message.channel.send(`Missing Permissions: \`${invalidPerms}\``);
         }
     }
-    let userQuery = { userID: message.author.id }
-
-    let user = await profileModel.findOne(userQuery);
-
-    if (!user) {
-        let new_user = new profileModel(userQuery)
-        await new_user.save();
-        user = await profileModel.findOne(userQuery);
-    };
 
     async function commandExecute() {
-        if (command) command.execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afkInfo);
+        if (command) command.execute(message, args, client, Discord, afkInfo);
     }
 
     if (command) {
