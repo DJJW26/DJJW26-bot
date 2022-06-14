@@ -3,17 +3,25 @@ module.exports = {
     description: 'lockdowns certain channels',
     cooldowns: 10,
     category: 'moderation',
-    execute (message){
-        const unlockChannel = [];
-        if(message.member.permissions.has('BAN_MEMBERS') || message.member.id === '869768645067292693'){
-            message.guild.channels.cache.forEach(channel => {
-                if(unlockChannel.includes(channel.id)) return 
-                channel.permissionOverwrites.create(channel.guild.roles.everyone, { SEND_MESSAGES: false });
-            });
+    async execute(message, args) {
+        if (!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command');
+
+        const role = message.guild.roles.everyone;
+
+        if (!args.length) return message.reply('Please specify true or false');
+
+        const perms = role.permissions.toArray();
+
+        if (args[0].toLowerCase() === 'true') {
+            const newPerms = perms.filter(perm => perm !== 'SEND_MESSAGES');
+            await role.edit({ permissions: newPerms });
+            message.reply('Locked down all channels');
+        } else if (args[0].toLowerCase() === 'false') {
+            perms.push('SEND_MESSAGES');
+            await role.edit({ permissions: perms });
+            message.reply('Unlocked all channels');
+        } else {
+            return message.reply('Please specify true or false');
         }
-        else{
-            message.channel.send('you do not have perms high enough');
-        }
-        message.channel.send('THIS CHANNEL HAS BEEN LOCKED DOWN');
     }
 }

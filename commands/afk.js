@@ -4,7 +4,7 @@ module.exports = {
     name: 'afk',
     description: 'Lets a user set their AFK status',
     category: 'utility',
-    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master, afkInfo) {
+    async execute(message, args, client, Discord, afkInfo) {
         const admin = message.member.permissions.has('ADMINISTRATOR')
         if (['clear', 'remove'].includes(args[0]) && admin) {
             args.shift()
