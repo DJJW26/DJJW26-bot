@@ -1,13 +1,10 @@
 const weather = require('weather-js');
-
-const Discord = require('discord.js');
-
 module.exports = {
     name: 'weather',
     aliases: ['wthr'],
     description: 'Gets the weather of a city',
     category: 'fun',
-    async execute(message, args) {
+    async execute(message, args, client, Discord) {
     
         weather.find({search: args.join(" "), degreeType: 'F'}, function (error, result){
         // 'C' can be changed to 'F' for farneheit results

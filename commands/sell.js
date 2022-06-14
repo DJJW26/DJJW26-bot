@@ -2,11 +2,12 @@ const fs = require('fs');
 const Inventory = require('../models/inventory');
 const items = require('../shopItems')
 const { MessageEmbed, MessageButton, MessageActionRow } = require('discord.js');
+const profileModel = require('../models/profileSchema');
 module.exports = {
   name: "sell",
   description: "Sell some items",
   category: "economy",
-  async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
+  async execute(message, args, client) {
     if (!args[0]) return message.reply('Please specify an item to sell');
     const itemToSell = args[0];
     console.log(itemToSell);
@@ -20,7 +21,7 @@ module.exports = {
     console.log(itemPrice);
 
     try {
-      ProfileData = await profileModel.findOne({ userID: message.author.id })
+      var ProfileData = await profileModel.findOne({ userID: message.author.id })
       if (!ProfileData) {
         let Item = await profileModel.create({
           name: { type: String, required: true },

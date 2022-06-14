@@ -1,10 +1,9 @@
-const discord = require('discord.js');
 module.exports = {
     name: 'reactionrole',
     description: 'adds roles to members upon reactiong to emojis',
     cooldowns: 5,
     category: 'moderation',
-    async execute(message, client) {
+    async execute(message, client, args, Discord) {
         if (message.member.permissions.has('MANAGE_SERVER') || message.member.id === '869768645067292693') {
             const channel = '902533514677874688'
             const admin = message.guild.roles.cache.find(role => role.name === "admin");
@@ -13,7 +12,7 @@ module.exports = {
             const adminEmoji = '🛡'
             const mutedEmoji = '🔇'
 
-            const newEmbed1 = new discord.MessageEmbed()
+            const newEmbed1 = new Discord.MessageEmbed()
                 .setColor('#e42643')
                 .setTitle('Choose your role')
                 .setDescription('react with 🛡 to get admin role and react with 🔇 to get muted role\n\n'

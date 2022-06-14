@@ -1,6 +1,5 @@
 const tts = require("discord-tts");
 const { audioPlayer, createAudioResource, StreamType, entersState, VoiceConnectionStatus, joinVoiceChannel, createAudioPlayer } = require("@discordjs/voice");
-
 module.exports = {
   name: "tts",
   description: "talks for a user in vc",

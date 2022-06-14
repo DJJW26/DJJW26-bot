@@ -1,5 +1,4 @@
 const profileModel = require("../models/profileSchema");
-
 module.exports = {
     name: "search",
     aliases: ['scout'],

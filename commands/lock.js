@@ -1,4 +1,3 @@
-const { Permissions } = require('discord.js');
 module.exports = {
     name: 'lock',
     description: 'locks a specific channel',

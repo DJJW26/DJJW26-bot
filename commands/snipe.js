@@ -1,11 +1,8 @@
 const {
     MessageEmbed,
-    Client,
-    Message,
     MessageButton,
     MessageActionRow,
 } = require('discord.js')
-
 module.exports = {
     name: 'snipe',
     description: 'snipes the last message',

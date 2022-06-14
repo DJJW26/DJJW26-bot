@@ -5,7 +5,7 @@ module.exports = {
     aliases: 'interest',
     description: 'shows a random interesting fact',
     category: 'fun',
-    execute(message,args,client, Discord) {
+    execute(message,args, client, Discord) {
         let urls = ["https://meme-api.herokuapp.com/gimme/mildlyinteresting", "https://meme-api.herokuapp.com/gimme/interestingasfuck", "https://meme-api.herokuapp.com/gimme/damnthatsinteresting"];
 
         let subreddit = urls[Math.floor(Math.random() * urls.length)];

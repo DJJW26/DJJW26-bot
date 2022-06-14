@@ -1,6 +1,4 @@
 const {
-    Message,
-    Client,
     MessageEmbed,
     MessageActionRow,
     MessageButton,
@@ -13,7 +11,7 @@ module.exports = {
     description: 'Get relative time.',
     usage: `<time>`,
     category: 'utility',
-    async execute(message, args, client) {
+    async execute(message, args) {
         const formatTime = (time, format) => {
             return `<t:${(time / 1000).toFixed(0)}:${format || 'R'}>`
         }

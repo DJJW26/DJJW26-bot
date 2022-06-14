@@ -1,11 +1,9 @@
 var Scraper = require('images-scraper');
-
 const google = new Scraper({
     puppeteer: {
         headless: true
     }
 })
-
 module.exports = {
     name: 'image',
     aliases: ['img'],

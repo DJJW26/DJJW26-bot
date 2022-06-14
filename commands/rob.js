@@ -1,9 +1,10 @@
+const profileModel = require('../models/profileSchema');
 module.exports = {
     name: 'rob',
     aliases: 'ripoff',
     description: 'rob off some coins from a player',
     category: 'economy',
-    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
+    async execute(message, args, client, Discord) {
         if (!args.length) return message.reply('whom do you wanna rob?');
 
         if (!message.mentions.users.size) return message.reply('mention the person you wanna rob');

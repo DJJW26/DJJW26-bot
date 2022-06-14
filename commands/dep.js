@@ -1,10 +1,19 @@
 const profileModel = require("../models/profileSchema");
+var ProfileData = profileModel.findOne({ userID: message.author.id });
+if (!ProfileData) {
+    new profileModel({
+        userID: message.author.id,
+        coins: 5000,
+        bank: 0,
+    }).save();
+}
+ProfileData = profileModel.findOne({ userID: message.author.id });
 module.exports = {
     name: "dep",
     aliases: ["deposit"],
     description: "Deposit coins into your bank!",
     category: "economy",
-    async execute(message, args, ProfileData) {
+    async execute(message, args) {
         let amount = args[0]
         let resultBank
         if (amount == 'all'){

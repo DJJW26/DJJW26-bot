@@ -1,4 +1,3 @@
-const tesseract = require('tesseract.js');
 const {createWorker} = require('tesseract.js');
 module.exports = {
     name: 'ocr',

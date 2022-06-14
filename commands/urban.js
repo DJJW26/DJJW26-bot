@@ -1,5 +1,4 @@
 const { request } = require('undici')
-
 module.exports = {
     name: 'urban',
     aliases: ['ub'],

@@ -11,7 +11,7 @@ module.exports = {
     description: 'Start a game of amogus, right in discord!',
     category: 'fun',
     cooldown: 10,
-    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
+    async execute(message, args, client, ) {
 
         const emojiArray = [
             '917726679214985246',

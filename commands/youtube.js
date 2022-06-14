@@ -1,6 +1,5 @@
 const { MessageEmbed } = require('discord.js');
 const yts = require('yt-search');
-
 module.exports = {
     name: 'youtube',
     aliases: ['yt', 'yt-search'],

@@ -1,11 +1,11 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
-
+const profileModel = require("../models/profile");
 module.exports = {
     name: 'give',
     aliases: 'share',
     description: 'give some coins to a player',
     category: 'economy',
-    async execute(message, args, client, Discord, ProfileData, profileModel, user, userQuery, master) {
+    async execute(message, args, client) {
         let target;
         if (!message.mentions.users.size) {
             if (!args[0]) return message.reply('No user provided.')
@@ -28,7 +28,7 @@ module.exports = {
         if (isNaN(coinsToDonate)) return message.reply("Please enter a valid number");
 
         try {
-            ProfileData = await profileModel.findOne({ userID: message.author.id })
+            var ProfileData = await profileModel.findOne({ userID: message.author.id })
             if (!ProfileData) {
                 let Item = await profileModel.create({
                     name: { type: String, required: true },

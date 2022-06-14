@@ -10,13 +10,11 @@ module.exports = {
     category: 'economy',
     async execute(message, args) {
         var user = null;
-
         if (message.mentions.users.size) {
             user = message.mentions.users.first().id;
         } else {
             user = message.author.id;
         }
-
         try {
             var profile = await profileModel.findOne({ userID: user });
             if (!profile) {

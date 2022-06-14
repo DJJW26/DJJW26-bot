@@ -12,7 +12,7 @@ module.exports = {
     description: 'Battlegrounds',
     category: 'fun',
     aliases: ['pubg', 'fortnite', 'bg', 'arena'],
-    async execute(message, client) {
+    async execute(message, args ,client) {
         if (!message.member.permissions.has('ADMINISTRATOR')) {
             message.channel.send('Admin only command lol')
             return
