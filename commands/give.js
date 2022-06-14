@@ -1,5 +1,5 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
-const profileModel = require("../models/profile");
+const profileModel = require("../models/profileSchema");
 module.exports = {
     name: 'give',
     aliases: 'share',
