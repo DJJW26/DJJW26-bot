@@ -1,8 +1,6 @@
 const profileModel = require("../models/profileSchema");
 module.exports = {
   name: "beg",
-  aliases: [],
-  permissions: [],
   cooldown: 30,
   description: "beg for coins",
   category: 'economy',

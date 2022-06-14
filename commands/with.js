@@ -2,7 +2,6 @@ const profileModel = require("../models/profileSchema");
 module.exports = {
     name: "with",
     aliases: ["withdraw"],
-    permissions: [],
     description: "Withdraw coins from your bank!",
     category: "economy",
     async execute(message, args) {

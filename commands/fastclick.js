@@ -2,7 +2,6 @@ const { Message, MessageButton, MessageActionRow } = require('discord.js')
 const ms = require('pretty-ms')
 module.exports = {
     name: 'fastclick',
-    usage: '<USER>',
     description: 'Use your skills to win fights, the fastest to click wins!',
     cooldown: 5,
     category: 'fun',

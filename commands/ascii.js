@@ -3,7 +3,6 @@ var figlet = require('figlet');
 const { promisify } = require("util");
 module.exports = {
     name: "Ascii",
-    aliases: [],
     description: "Ascii Art!",
     category: "fun",
     async execute(message, args) {

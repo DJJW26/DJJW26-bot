@@ -9,7 +9,6 @@ const { getMilliseconds } = require('better-ms')
 module.exports = {
     name: 'time',
     description: 'Get relative time.',
-    usage: `<time>`,
     category: 'utility',
     async execute(message, args) {
         const formatTime = (time, format) => {

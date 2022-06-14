@@ -1,7 +1,6 @@
 module.exports = {
     name: 'whois',
     aliases: ['wi'],
-    usage: 'user_id',
     description: 'Shows mutuals and userinfo about a certain user.',
     cooldowns: 1,
     category: 'utility',

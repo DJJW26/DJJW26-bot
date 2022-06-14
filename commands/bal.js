@@ -4,7 +4,6 @@ const profileModel = require(`./../models/profileSchema`)
 module.exports = {
     name: 'bal',
     aliases: ['balance', 'cash', 'money', 'coins'],
-    permissions: [],
     cooldown: 3,
     description: 'Lets you check your balance',
     category: 'economy',

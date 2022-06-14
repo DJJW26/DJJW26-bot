@@ -1,8 +1,6 @@
 const profileModel = require("../models/profileSchema");
 module.exports = {
   name: "add",
-  aliases: [],
-  permissions: ["ADMINISTRATOR"],
   description: "Give a player some coins",
   category: "economy",
   async execute(message, args) {
