@@ -9,7 +9,7 @@ module.exports = [
     },
     {
         item: 'Daily box',
-        price: 'Cannot be bought',
+        price: 'Cannot be bought with',
         description: 'Small chance of getting this box from the daily command.',
         usable: true,
         async use(message, args, client, Discord, profileData) {
@@ -84,7 +84,7 @@ module.exports = [
     },
     {
         item: 'Ping',
-        price: 'Cannot be bought',
+        price: 'Cannot be bought with',
         description: 'A ping.',
         usable: true,
         async use(message, args, client, Discord, profileData) {
@@ -136,7 +136,7 @@ module.exports = [
     },
     {
         item: 'Biscuit',
-        price: 'Cannot be bought',
+        price: 'Cannot be bought with',
         description: 'Just a biscuit.',
         usable: true,
         async use(message, args, client, Discord, profileData) {
