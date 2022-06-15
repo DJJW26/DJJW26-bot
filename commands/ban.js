@@ -3,11 +3,11 @@ module.exports = {
     description: 'bans a member',
     cooldowns: 5,
     category: 'moderation',
-    execute(message){
+    execute(message, args, client){
         const member = message.mentions.users.first();
         const userID = message.guild.members.cache.get(member.id);
         const name = member.username;
-        if (message.member.permissions.has('BAN_MEMBERS')|| message.author.id === 869768645067292693){
+        if (message.member.permissions.has('BAN_MEMBERS')|| client.trusted.includes(message.author.id)){
             if(userID.kickable == true){
                 userID.ban();
                 message.channel.send(`**${name}** has been banned`);

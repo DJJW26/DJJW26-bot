@@ -2,9 +2,9 @@ const profileModel = require("../models/profileSchema");
 module.exports = {
   name: "add",
   description: "Give a player some coins",
-  category: "economy",
-  async execute(message, args) {
-    if (message.author.id === 869768645067292693) return message.channel.send(`Only **DJJW26** can run this command`);
+  category: "dev",
+  async execute(message, args, client) {
+    if (!client.trusted.includes(message.author.id)) return;
     if (!args.length) return message.channel.send("You need to mention a player to give them coins");
     const amount = args[1];
     const target = message.mentions.users.first();

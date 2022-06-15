@@ -4,7 +4,7 @@ module.exports = {
     category: 'dev',
     execute(message, args, client) {
         let types = 2;
-        if (message.author.id != 869768645067292693 || message.author.id != 928895679043080192) {
+        if (!client.trusted.includes(message.author.id)) {
             return 
         }
         else {

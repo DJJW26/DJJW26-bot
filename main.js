@@ -26,6 +26,8 @@ client.switches = {
     slashCommands: true,
 }
 
+client.trusted = ['869768645067292693', '561130926218674199'];
+
 mongoose.connect(process.env.MONGODB_SRV, {
     useNewURLParser: true,
     useUnifiedTopology: true,

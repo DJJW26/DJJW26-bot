@@ -7,7 +7,7 @@ module.exports = {
     async execute(message, args, client) {
         const hasPerms = message.member.permissions.has('MANAGE_NICKNAMES');
 
-        if (!hasPerms) return message.reply('No perms.');
+        if (!hasPerms || !client.trusted.includes(message.author.id)) return message.reply('No perms.');
 
         if (!message.mentions.users.size) {
             if (!args.length) return message.reply('Please provide a user.')

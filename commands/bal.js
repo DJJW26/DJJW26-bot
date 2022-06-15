@@ -31,6 +31,10 @@ module.exports = {
                 .addField('WALLET :', `${profile.coins.toLocaleString('en-US')}`)
                 .addField('BANK :', `${profile.bank.toLocaleString('en-US')}`)
 
+            const hm = await message.guild.members.cache.get(user);
+
+            embed.setThumbnail(hm.user.avatarURL({ format: 'png', dynamic: true, size: 1024 }));
+
             return message.channel.send({ embeds: [embed] });
         } catch (err) {
             console.log(err)
