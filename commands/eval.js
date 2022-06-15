@@ -7,13 +7,11 @@ module.exports = {
     description: 'Evaluates code',
     category: 'dev',
     async execute(message, args) {
-        if (!message.author.id == "869768645067292693") return;
+        if (message.author.id !== "869768645067292693") return;
 
         if (!args) {
             return message.channel.send({ embeds: [errEmbed('No args provided!')] })
         }
-
-
 
         const input = args.join(' ');
 
