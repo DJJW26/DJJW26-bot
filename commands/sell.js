@@ -10,11 +10,9 @@ module.exports = {
   async execute(message, args, client) {
     if (!args[0]) return message.reply('Please specify an item to sell');
     const itemToSell = args[0];
-    console.log(itemToSell);
 
     const validItem = !!items.find((val) => val.item === itemToSell);
     if (!validItem) return message.reply('The item that you wanted to sell is not even an item');
-    console.log(validItem);
 
     const itemPrice = items.find((val) => val.item === itemToSell)
       .price;
@@ -91,7 +89,7 @@ module.exports = {
             User: message.author.id,
           };
 
-          const addCoins = Math.floor(itemPrice / 3);
+          const addCoins = Math.round(itemPrice / 3);
 
           Inventory.findOne(params, async (err, data) => {
             if (data) {

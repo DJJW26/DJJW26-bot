@@ -1,4 +1,4 @@
-const db = require('../models/afkModel')
+const db = require('../models/utilityModel')
 
 module.exports = {
     name: 'afk',

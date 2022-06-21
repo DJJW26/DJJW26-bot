@@ -53,7 +53,6 @@ module.exports = async (Discord, client, message) => {
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const cmd = args.shift().toLowerCase();
-    const master = [869768645067292693, 928895679043080192];
 
     const command = client.commands.get(cmd) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
 

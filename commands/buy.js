@@ -1,5 +1,5 @@
 const fs = require('fs');
-const Inventory = require('../models/inventory');
+const currencyModel = require('../models/currencyModel');
 const items = require('../shopItems')
 const { MessageEmbed, MessageButton, MessageActionRow } = require('discord.js');
 module.exports = {
@@ -17,28 +17,20 @@ module.exports = {
       .price;
 
 
-      if(typeof itemPrice == String) return message.reply('You cant buy that item?');
+      if(itemPrice == 'Cannot be bought with') return message.reply('You cant buy that item?');
 
     try {
-      ProfileData = await profileModel.findOne({ userID: message.author.id })
+      ProfileData = await currencyModel.findOne({ userID: message.author.id })
       if (!ProfileData) {
-        let Item = await profileModel.create({
-          name: { type: String, required: true },
-          aliases: { type: Array, default: [] },
-          description: String,
-          cost: { type: Number, required: true },
-        });
-
-
-        let profile = await profileModel.create({
-          userID: { type: String, required: true },
-          coins: { type: Number, default: 5000, min: 0 },
-          bank: { type: Number, default: 0, min: 0 },
-          Inventory: [Item]
+        let profile = await currencyModel.create({
+          userID: message.author.id,
+          coins: 5000,
+          bank: 0,
+          Inventory: {},
         })
         profile.save();
       }
-      ProfileData = await profileModel.findOne({ userID: message.author.id })
+      ProfileData = await currencyModel.findOne({ userID: message.author.id })
     } catch (err) {
       console.log(err)
     }
@@ -75,7 +67,7 @@ module.exports = {
           User: message.author.id,
         };
 
-        Inventory.findOne(params, async (err, data) => {
+        currencyModel.findOne(params, async (err, data) => {
           if (data) {
             const hasItem = Object.keys(data.Inventory).includes(itemToBuy);
             if (!hasItem) {
@@ -83,8 +75,8 @@ module.exports = {
             } else {
               data.Inventory[itemToBuy]++;
             }
-            await Inventory.findOneAndUpdate(params, data);
-            await profileModel.findOneAndUpdate(
+            await currencyModel.findOneAndUpdate(params, data);
+            await currencyModel.findOneAndUpdate(
               {
                 userID: message.author.id,
               },
@@ -101,13 +93,13 @@ module.exports = {
                 .setTitle(`Successfull ${itemToBuy} purchase`)]
             })
           } else {
-            new Inventory({
+            new currencyModel({
               User: message.author.id,
               Inventory: {
                 [itemToBuy]: 1,
               },
             }).save();
-            await profileModel.findOneAndUpdate(
+            await currencyModel.findOneAndUpdate(
               {
                 userID: message.author.id,
               },

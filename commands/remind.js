@@ -1,5 +1,5 @@
 const ms = require('ms')
-const remindDb = require('../models/remindModel');
+const remindDb = require('../models/utilityModel');
 
 module.exports = {
     name: 'remind',
