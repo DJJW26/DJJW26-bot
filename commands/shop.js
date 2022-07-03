@@ -7,12 +7,17 @@ module.exports = {
   description: "The item shop",
   category: "economy",
   async execute(message, args, client) {
-    if(items.length === 0) return message.reply('There is no item for sale.')
+    if (items.length === 0) return message.reply('There is no item for sale.')
+
+    const shopBed = new Discord.MessageEmbed()
+      .setTitle('Shop')
+      .setColor('GREEN')
 
     const shopList = items
       .map((value, index) => {
-        return `**${index+1})** ${value.item} => ${value.price} coins`
+        return `**${index + 1})** ${value.item} => ${value.price} coins`
       });
-      message.channel.send(shopList.join(' \n'));
+    shopBed.setDescription(`${shopList.join('\n')}`)
+    message.channel.send({ embeds: [shopBed] });
   }
 }

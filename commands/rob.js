@@ -1,7 +1,7 @@
 const profileModel = require('../models/currencyModel');
 module.exports = {
     name: 'rob',
-    aliases: 'ripoff',
+    aliases: ['ripoff'],
     description: 'rob off some coins from a player',
     category: 'economy',
     async execute(message, args, client, Discord) {
