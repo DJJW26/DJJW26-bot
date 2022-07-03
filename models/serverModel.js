@@ -2,6 +2,7 @@ const {model, Schema} = require('mongoose');
 
 module.exports = model('server', new Schema({
     Guild: String,
+    Prefix: String,
     Tags: Object,
     MuteRole: String,
     GiveawayBypassRole: String,

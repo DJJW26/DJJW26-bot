@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const Inventory = require('../models/inventory');
+const Inventory = require('../models/currencyModel');
 module.exports = {
   name: "inv",
   description: 'Lets the user check their inventory',

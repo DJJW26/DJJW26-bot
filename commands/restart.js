@@ -5,6 +5,7 @@ module.exports = {
     description: 'Restart the bot',
     category: 'dev',
     async execute(message,args,client) {
+        message.react('👍');
         shell.exec('node main.js')
     }
 }

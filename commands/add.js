@@ -1,4 +1,4 @@
-const currencyModel = require("../models/currencyModel");
+const profileModel = require("../models/currencyModel");
 module.exports = {
   name: "add",
   description: "Give a player some coins",
