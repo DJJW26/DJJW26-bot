@@ -3,6 +3,7 @@ const cooldown = require('../../models/cooldownSchema.js')
 const afkModel = require('../../models/afkModel');
 
 module.exports = async (Discord, client, message) => {
+    if (message.author.bot) return;
     afkInfo = ['amogus']
 
     if (afkInfo.includes(message.author.id)) {

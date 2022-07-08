@@ -1,5 +1,5 @@
 const items = require('../shopItems');
-const Inventory = require('../models/inventory');
+const Inventory = require('../models/currencyModel');
 
 module.exports = {
     name: 'use',
