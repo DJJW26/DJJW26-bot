@@ -49,6 +49,8 @@ module.exports = async (Discord, client, message) => {
         }
     }
 
+    if(!client.switches.commands) return message.reply('Commands are temporarily disabled')
+
     const prefix = process.env.PREFIX;
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
