@@ -13,7 +13,7 @@ module.exports = {
         { name: 'Roundtrip latency: ', value: `${sent.createdTimestamp - message.createdTimestamp}`},
         { name: 'Client ws: ', value: `${client.ws.ping}`}
       )
-      .setFooter('Check the bot ping here')
+      .setFooter({text: 'Check the bot ping here'})
       sent.edit(
         {embeds : [embed]}
       );

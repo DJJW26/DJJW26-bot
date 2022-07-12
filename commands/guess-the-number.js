@@ -44,7 +44,7 @@ module.exports = {
                         new MessageEmbed()
                             .setTitle(`Correct`)
                             .setDescription(`${parseInt(msg)} is correct!`)
-                            .setFooter(`It took you ${tries} times to get it`)
+                            .setFooter({text: `It took you ${tries} times to get it`})
                             .setTimestamp()
                             .setColor('GREEN')
                     ]
