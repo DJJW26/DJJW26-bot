@@ -22,15 +22,8 @@ module.exports = {
                 Inventory: {},
             }).save();
         } else {
-            if (data.DailyStreak == 0) {
-                data.DailyStreak = 1;
-                data.DailyStreakTime = new Date();
-                data.coins = 30000;
-                data.save();
-            } else {
-                data.coins += 500 * data.DailyStreak;;
-                data.save();
-            }
+            data.coins = data.coins + 25000;
+            data.save();
         }
         message.channel.send({ embeds: [embed] });
     }
