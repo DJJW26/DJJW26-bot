@@ -10,7 +10,7 @@ module.exports = {
     aliases: ['calc'],
     category: 'utility',
     description: 'A *Fancy* calculator within discord.',
-    async execute(message, args, client) {
+    async execute(message) {
         const getRandomHash = () => {
             return randomBytes(18).toString('hex')
         }

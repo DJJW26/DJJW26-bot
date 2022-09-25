@@ -1,4 +1,8 @@
 const { MessageEmbed } = require('discord.js');
+const e = require('express');
+const ffmpeg = require('ffmpeg');
+const G = require('glob');
+const { join, xor } = require('lodash');
 const yts = require('yt-search');
 module.exports = {
     name: 'youtube',

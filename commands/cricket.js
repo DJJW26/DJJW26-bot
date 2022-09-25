@@ -4,50 +4,36 @@ module.exports = {
     category: 'fun',
     aliases: ['hand-cricket', 'handCricket'],
     async execute(message, args, client, Discord) {
-        var solo = null;
-        var batting = null;
-        var gameData = {
-            authorScore: 0,
-            targetScore: 0,
+        if(!message.mentions.users.size) return message.reply('You must mention a user to play with');
+        message.channel.send(`<@${message.mentions.users.first().id}>, <@${message.author.id}> has invited you to play a game of hand cricket with you. React with 👍 to accept the challenge.`)
+            .then(x => { 
+                x.react('👍');
+                const filter = (user) => {user.id === `${message.mentions.users.first().id}`;}
+                const confirmCollector = x.createReactionCollector({filter, max: 1, time: 15000})
+                confirmCollector.on('end', l => {
+                    if(l.size == 0) return message.reply('They dont want to play with you i guess.')
+                })
+            });
+            console.log('still');
+        let batter = null;
+        const user1 = {
+            user: message.author,
+            score: 0,
+            job: null
         }
-        if (client.games.cricket.includes(message.author.id)) return message.reply('You have an ongoing game.');
-
-        const infoBed = new Discord.MessageEmbed()
-            .setColor('GREEN')
-            .setTitle('How to play the game')
-            .setDescription('This is a game of hand cricket which is played between 2 players.\nYou can mention a player to play with, or play with the bot itself.\nTo play the game, a player has to win the toss to select batting or bowling, then after selecting the desired choice,both the players start using the buttons to select what number they has to use.\nIf the numbers do not match, the number adds to the score of the batsman, or else if consecutive, the batsman is bowled and loses theyre wicket, or if the numbers are same, the numbers are multiplied and added to the score of the batsman.\nOnce both the players have finished their batting, the one with the highest score wins.');
-
-        message.channel.send({ embeds: [infoBed] })
-
-        if (!message.mentions.users.size) solo = true;
-        else {
-            solo = message.mentions.users.first();
+        const user2 = {
+            user: message.mentions.users.first(),
+            score: 0,
+            job: null
         }
-
-        var toss = Math.round(Math.random() * 10);
-        var other = null;
-
-        if (toss % 2 == 0) {toss = message.author;other = null} 
-        else {
-            if (solo == true) toss = client.user.id;
-            else toss = solo;
+        if(Math.round(Math.random()*10) % 2 == 0) {
+            batter = user2.user;
+            user1.job = 'bowler';
+            user2.job = 'batter';
+        } else {
+            batter = user1.user;
+            user1.job = 'batter';
+            user2.job = 'bowler';
         }
-
-        if (toss == client.user.id) {
-            var amogus = Math.round(Math.random() * 10);
-            if(amogus % 2 == 0) {batting = client.user.id; message.channel.send(`The bot has won the toss and has chose to bat!`)}
-            else {batting = message.author.id; message.channel.send(`The bot has won the toss and has chose to bowl`)};
-        }
-
-        message.channel.send(`<@${toss.id}> has won the toss!\nYou have 15 seconds to respond with 'bat' or 'bowl'`)
-
-        const filter = ({ author, content }) => toss == author
-
-        const collector = message.channel.createMessageCollector({ filter, time: 15000, });
-
-        collector.on('collect', async (msg) => {
-            if (msg.toLowerCase() == 'bat') batting = toss.id;
-            else if(msg.toLowerCase() == 'bowl') batting = null;
-        })
     }
 }

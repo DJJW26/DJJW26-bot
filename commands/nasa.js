@@ -1,5 +1,3 @@
-const fetch = require("node-fetch");
-
 module.exports = {
     name: 'nasa',
     description: 'Gets a random info from NASA',

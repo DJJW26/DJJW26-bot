@@ -1,4 +1,3 @@
-const fetch = require("node-fetch");
 module.exports = {
     name: 'gif',
     description: 'Gets a gif from tenor',
